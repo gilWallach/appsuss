@@ -30,6 +30,10 @@ a {
   color: unset;
 }
 
+ul{
+  list-style-type: none;
+}
+
 
 
 /* Dont stretch my Media */

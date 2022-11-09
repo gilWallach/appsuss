@@ -1,0 +1,28 @@
+.notes-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+    gap: 5px;
+   
+}
+
+.notes-list > li {
+    border-radius: 0.8em;
+    height: max-content;
+    padding: 10px;
+}
+
+.notes-list .action-btns{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(22px,1fr));
+    opacity: 0;
+    transition: 0.8s;
+}
+
+.notes-list > li:hover .action-btns {
+    opacity: 1;
+}
+
+.notes-list .action-btns input{
+    opacity: 0;
+    position: absolute;
+}

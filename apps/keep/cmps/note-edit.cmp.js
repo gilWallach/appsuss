@@ -1,5 +1,5 @@
 export default {
     template:`
-    <h1>Hello from Filter</h1>
+    <h1>Hello from Edit</h1>
     `
 }

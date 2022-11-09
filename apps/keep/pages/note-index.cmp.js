@@ -12,6 +12,7 @@ export default {
     <note-filter/>
     <note-edit/>
     <note-list
+    @remove="removeNote"
     @property-change="saveNote"
     :notes="notes"/>
     `,
@@ -30,6 +31,13 @@ export default {
         },
         saveNote(note){
             noteService.save(note)
+        },
+        removeNote(noteId){
+            noteService.remove(noteId)
+            .then(()=>{
+                const idx = this.notes.findIndex(note=>note.id === noteId)
+                this.notes.splice(idx,1)
+            })
         }
     },
     components: {

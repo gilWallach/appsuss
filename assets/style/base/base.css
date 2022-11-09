@@ -40,7 +40,8 @@ ul{
 img,
 embed,
 video,
-object {
+object,
+iframe {
   max-width: 100%
 }
 

@@ -37,13 +37,13 @@ const routerOptions = {
 			]
 		},
 		{
-			path: 'mail/:id',
+			path: '/mail/:id',
 			component: mailDetails
 		},
 
 		// keep routes
 		{
-			path: '/kepp',
+			path: '/keep',
 			component: keepApp,
 			children: [
 				{

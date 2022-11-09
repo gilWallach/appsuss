@@ -3,7 +3,9 @@ import { storageService } from "../../../services/async-storage.service.js"
 
 export const mailService = {
     query,
-    getUser
+    getUser,
+    getCriteria,
+
 }
 const MAILS_KEY = 'mailsDB'
 const USER_KEY = 'userDB'
@@ -44,7 +46,6 @@ const loggedinUser = {
     fullname: 'Mahatma Appsus'
 }
 
-_createMails()
 
 // filterBy
 const criteria = {
@@ -53,20 +54,26 @@ const criteria = {
     isRead: true, // (optional property, if missing: show all)
     isStared: true, // (optional property, if missing: show all)
     lables: ['important', 'romantic'] // has any of the labels
-   }
+}
 
-   function query() {
+_createMails()
+
+function query() {
     return storageService.query(MAILS_KEY)
 }
 
-function getUser(){
+function getUser() {
     return loggedinUser
 }
 
-   function _createMails(){
-        let mails = utilService.loadFromStorage(MAILS_KEY)
-        if (!mails || !mails.length){
-            mails = gMails
-            utilService.saveToStorage(MAILS_KEY, mails)
-        }
-   }
+function getCriteria() {
+    return criteria
+}
+
+function _createMails() {
+    let mails = utilService.loadFromStorage(MAILS_KEY)
+    if (!mails || !mails.length) {
+        mails = gMails
+        utilService.saveToStorage(MAILS_KEY, mails)
+    }
+}

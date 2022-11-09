@@ -1,6 +1,6 @@
 // edit & add - optional id
 export default {
     template:`
-    <h1>Hello Mail Edit/Add</h1>
+    <button class="add-mail">Compose</button>
     `
 }

@@ -11,6 +11,7 @@ export default {
         <mail-header />
         <mail-list 
         :mails="mailsToShow"
+        :criteria="criteria"
         />
     </main>
     `,
@@ -24,6 +25,7 @@ export default {
         return {
             mails: null,
             user: mailService.getUser(),
+            criteria: mailService.getCriteria(),
         }
     },
     methods: {

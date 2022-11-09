@@ -2,6 +2,7 @@
     padding: 8px;
     width: 100%;
     justify-content: space-between;
+    background-color: var(--secondary-clr1);
 }
 .header-sec .burger{
     font-size: 24px;
@@ -36,7 +37,7 @@
     min-width: 324px;
     border-radius: 10px;
     border:none;
-    background-color: var(--secondary-clr1);
+    background-color: var(--secondary-clr2);
 }
 .header-sec .right img{
     width: 32px;

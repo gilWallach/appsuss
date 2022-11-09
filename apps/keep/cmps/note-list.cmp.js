@@ -20,7 +20,8 @@ export default {
         </li>
     </ul>
     `,
-    methods:{
+    methods:
+    {
         styleNote(note){
             return {backgroundColor:note.style.backgroundColor}
         },

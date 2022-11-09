@@ -2,17 +2,18 @@ import { utilService } from "../../../services/util.service.js"
 import { storageService } from "../../../services/async-storage.service.js"
 
 export const mailService = {
-    query
+    query,
+    getUser
 }
 const MAILS_KEY = 'mailsDB'
-
+const USER_KEY = 'userDB'
 
 const gMails = [
     {
         id: 'e101',
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
-         isRead: false,
+        isRead: false,
         sentAt: 1551133930594,
         from: 'momo@momo.com',
         to: 'user@appsus.com'
@@ -25,8 +26,9 @@ const gMails = [
         sentAt: 155112390594,
         from: 'momo@momo.com',
         to: 'user@appsus.com'
-    }
+    },
 ]
+
 const mail = {
     id: 'e101',
     subject: 'Miss you!',
@@ -38,7 +40,7 @@ const mail = {
 }
 
 const loggedinUser = {
-    email: 'user@appsus.com',
+    mail: 'user@appsus.com',
     fullname: 'Mahatma Appsus'
 }
 
@@ -55,7 +57,11 @@ const criteria = {
 
    function query() {
     return storageService.query(MAILS_KEY)
-  }
+}
+
+function getUser(){
+    return loggedinUser
+}
 
    function _createMails(){
         let mails = utilService.loadFromStorage(MAILS_KEY)

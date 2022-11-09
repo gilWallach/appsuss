@@ -9,6 +9,7 @@ import mailEdit from './apps/mail/cmps/mail-edit.cmp.js'
 import mailDetails from './apps/mail/pages/mail-details.cmp.js'
 
 //keep
+import keepDetails from './apps/keep/pages/note-details.cmp.js'
 
 
 const { createRouter, createWebHashHistory } = VueRouter

@@ -1,3 +1,7 @@
 // list cmp
 // filter cmp watch url changes (queryParams) emit to mail-index update mailsToShow for list
-import { utilService } from '../../../services/util.service.js'
+export default {
+    template:`
+    <h1>Hello Mail</h1>
+    `
+}

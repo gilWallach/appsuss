@@ -9,13 +9,16 @@ export default {
     template: `
         <section class="mail-list-container flex">
             <mail-aside :criteria="criteria" />
-            <table class="mail-list"> 
-                <tr v-for="mail in mails" 
-                    :class="{ bold: mail.isRead }" 
-                    key="mail.id">
-                    <mail-preview :mail="mail" />
-                </tr>
-            </table>
+            <div className="mail-list-table">
+
+                <table class="mail-list"> 
+                        <tr class="list-item" v-for="mail in mails" 
+                            :class="{ bold: mail.isRead }" 
+                            key="mail.id">
+                                <mail-preview :mail="mail" />
+                        </tr>
+                </table>
+            </div>
         </section>    
     `,
     methods: {

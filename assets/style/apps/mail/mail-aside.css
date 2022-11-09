@@ -1,4 +1,31 @@
 .aside-continer{
     width: 268px;
-    background: var(--secondary-clr1);
+    height: 100vh;
+}
+
+.mail-add-container{
+    position: relative;
+}
+.aside-continer button{
+    background-color: var(--secondary-clr3);
+    border: none;
+    border-radius: 10px;
+    padding: 16px 24px 16px 6px;
+    margin: 8px;
+    font-size: 14px;
+    width: 142px;
+    justify-content: space-around;
+}
+
+.mail-filter-container ul{
+    margin-inline: 26px 12px;
+    padding: 0;
+}
+.mail-filter-container ul li{
+    padding: 6px 0;
+    
+}
+.mail-filter-container h4{
+    margin-inline: 26px 12px;
+
 }

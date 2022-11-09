@@ -1,6 +1,6 @@
 export default {
     template: `
-    <section class="header-sec flex">
+    <section class="header-sec flex align-center">
         <div class="left flex align-center">
             <i class="fa fa-bars burger" aria-hidden="true"></i>
                 <img src="../../../assets/img/icons/Gmail-Logo.png" alt="Gmail-Logo" />

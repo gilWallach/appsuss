@@ -4,11 +4,11 @@
 export default {
     props: ['mail'],
     template: `
-        <td><input type="checkbox" id="isSelected" name="isSelected"></td>
-        <td><i class="fa fa-thin fa-star"></i></td>
-        <td><span>{{ fromFormat }}</span></td>
-        <td><span>{{ mail.subject }}</span></td>   
-        <td><span>{{ sentAtFormat }}</span></td>   
+        <td class="checkbox"><input type="checkbox" id="isSelected" name="isSelected"></td>
+        <td class="starred"><i class="fa fa-thin fa-star"></i></td>
+        <td class="from"><span>{{ fromFormat }}</span></td>
+        <td class="subject"><span>{{ mail.subject }}</span></td>   
+        <td class><span>{{ sentAtFormat }}</span></td>   
     `,
     data(){
         return {

@@ -1,0 +1,16 @@
+.checkbox, .starred{
+    flex-grow: .2;
+    flex-shrink: .2;
+}
+.checkbox input{
+    cursor: pointer;
+}
+.subject, .from{
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.sent-at{
+    flex-grow: .5;
+    flex-shrink: .5;
+}

@@ -1,0 +1,16 @@
+
+.mail-list-table{
+    width: 100%;
+    border-radius: 15px;
+    background: #fff;
+}
+
+.mail-list{
+    width: 100%;
+}
+
+.list-item {
+    justify-content: space-between;
+    cursor: pointer;
+    line-height: 1.8em;
+}

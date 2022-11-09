@@ -11,6 +11,7 @@
 /* General Components */
 @import 'cmps/home-page.css';
 @import 'cmps/app-header.css';
+@import 'cmps/app-footer.css';
 @import 'cmps/user-msg.css';
 
 /* Apps */
@@ -18,6 +19,8 @@
 @import 'apps/mail/mail-app.css';
 @import 'apps/mail/mail-header.css';
 @import 'apps/mail/mail-aside.css';
+@import 'apps/mail/mail-list.css';
+@import 'apps/mail/mail-preview.css';
 @import 'apps/note/note-app.css';
 
 /* notes */

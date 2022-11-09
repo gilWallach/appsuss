@@ -1,11 +1,22 @@
 import homePage from './views/app-home.cmp.js'
 import aboutPage from './views/app-about.cmp.js'
+// apps
+import keepApp from './apps/keep/pages/note-index.cmp.js'
+import mailApp from './apps/mail/pages/mail-index.cmp.js'
+
+//mail
+import mailEdit from './apps/mail/cmps/mail-edit.cmp.js'
+import mailDetails from './apps/mail/pages/mail-details.cmp.js'
+
+//keep
+
 
 const { createRouter, createWebHashHistory } = VueRouter
 
 const routerOptions = {
 	history: createWebHashHistory(),
 	routes: [
+		// mail routes
 		{
 			path: '/',
 			component: homePage,
@@ -16,21 +27,23 @@ const routerOptions = {
 		},
 		{
 			path: '/mail',
-			component: appMail,
+			component: mailApp,
 			children: [
 				{
 					path: '/mail/mail-edit:?id',
 					component: mailEdit
 				},
-				{
-					path: 'mail/:id',
-					component: mailDetails
-				},
 			]
 		},
 		{
+			path: 'mail/:id',
+			component: mailDetails
+		},
+
+		// keep routes
+		{
 			path: '/kepp',
-			component: appKeep,
+			component: keepApp,
 			children: [
 				{
 					path: '/keep/keep-details:?id', // dynamic child component + object with cmps in service (smart cmp)
@@ -38,7 +51,7 @@ const routerOptions = {
 				},
 			]
 		},
-		
+
 	],
 }
 

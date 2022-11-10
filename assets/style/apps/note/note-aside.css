@@ -1,5 +1,6 @@
 .main-app .aside{
-    width: 100%;
+    flex-basis: 25%;
+    font-family: nunito-bold;
 }
 
 .main-app .aside ul{
@@ -27,8 +28,8 @@
     padding-inline-end: 20px;
 }
 
-.main-app .aside i{
-
+.main-app .aside a:not(.router-link-exact-active):hover{
+    background-color: var(--secondary-clr2);
 }
 
 .main-app .aside .router-link-exact-active{

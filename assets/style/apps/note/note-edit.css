@@ -1,3 +1,34 @@
 .note-edit .action-btns button:not(.active){
     color: var(--clr3);
 }
+
+.note-edit form > *,
+.note-edit .action-btns > *{
+    outline: 0;
+    border: 0;
+    background-color: var(--clr1);
+}
+
+.note-edit .action-btns button:hover:not(.active){
+    color: var(--clr5);
+    background-color: var(--secondary-clr2);
+}
+
+.note-edit{
+    background-color: var(--clr1);
+    border-radius: 1em;
+    box-shadow: 0px 0px 5px 0px var(--clr3);
+}
+
+.note-edit input {
+    border-radius: 1em 0 0 1em;
+    min-height: 48px;
+}
+
+/* .note-edit .action-btns button:last-child{
+    border-radius: 0 1em 1em 0;
+} */
+
+.note-edit .action-btns button {
+    border-radius: 50%;
+}

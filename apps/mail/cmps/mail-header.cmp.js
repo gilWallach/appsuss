@@ -5,18 +5,23 @@ export default {
         <div class="left flex align-center">
             <i class="fa fa-bars burger" aria-hidden="true"></i>
                 <img :src="setLogo" :class="setClass" alt="Gmail-Logo" />
-                <h2>{{setHeader}}</h2>
+                <h2><router-link :to="setNavigation">{{setHeader}}</router-link></h2>
         </div>
         <div class="middle flex">
             <input 
-                    @change="searchByTxt"
+                    @input="searchByTxt"
                     type="search" 
                     :placeholder="setPlaceholder"
                     v-model="input"/>
         </div>
         <div class="right flex">
-            <img clas="menu" src="assets/img/icons/icons-circled-menu.png" alt="icons-circled-menu" />        
+            <img @click="isShown= !isShown" class="menu btn" src="assets/img/icons/icons-circled-menu.png" alt="icons-circled-menu" />        
             <img src="assets/img/icons/user-icon.png" alt="user-icon.png" />
+            <nav class="main-nav" :class="{shown:isShown}">
+                <router-link v-if="this.type" to="/mail" title="Go to mails"><img src="assets/img/icons/Gmail-Logo.png" alt="" /></router-link>
+                <router-link v-else to="/keep" title="Go to keep"><img src="assets/img/icons/keep.png" alt="" /></router-link>
+                <router-link to="/about">About</router-link>
+            </nav>
             <!-- Todos: set our icons   -->
 
         </div>
@@ -24,7 +29,8 @@ export default {
     `,
     data() {
         return {
-            input: ''
+            input: '',
+            isShown:false
         }
     },
     methods: {
@@ -43,9 +49,12 @@ export default {
         setClass() {
             if (this.type) return 'keep-logo'
         },
-        setPlaceholder(){
+        setPlaceholder() {
             return (this.type) ? 'Search note' : 'Search mail'
-                }
+        },
+        setNavigation() {
+            return (this.type) ? '/keep' : '/mail'
+        }
     }
 
 }

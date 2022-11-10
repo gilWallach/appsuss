@@ -1,6 +1,9 @@
 // no template on
+import { mailService } from "../services/mail.service.js"
+
 export default {
-    props: ['criterias', 'mails',],
+    emits: ['filter'],
+    props: ['criterias'],
     template: `
     <ul>
         <a href="#"><li>Inbox</li></a>
@@ -17,11 +20,15 @@ export default {
     `,
     data() {
         return {
-            readMails: this.readMailsCount()
+            readMails: this.readMailsCount(),
+            filterBy: mailService.getEmptyCriteria()
         }
     },
+    created() {
+        console.log(this.filterBy);
+    },
     methods: {
-        readMailsCount(){
+        readMailsCount() {
             let counter = 0
             this.mails.map(mail => {
                 if (mail.isRead) counter++
@@ -31,6 +38,14 @@ export default {
         }
     },
     computed: {
-
+        urlChange(){
+            return this.$route.query
+        }
+    },
+    watch:{
+        urlChange(){
+            this.filterBy.txt = this.$route.query.txt
+            this.$emit('filter',{...this.filterBy})
+        }
     }
 }

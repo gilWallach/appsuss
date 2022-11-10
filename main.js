@@ -5,6 +5,7 @@ import { router } from './routes.js'
 import appHeader from './cmps/app-header.cmp.js'
 import appFooter from './cmps/app-footer.cmp.js'
 import userMsg from './cmps/user-msg.cmp.js'
+import mailHeader from './apps/mail/cmps/mail-header.cmp.js'
 
 const options = {
 	template: `
@@ -19,6 +20,7 @@ const options = {
 		appHeader,
 		appFooter,
 		userMsg,
+        mailHeader
 	},
 }
 

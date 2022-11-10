@@ -4,12 +4,18 @@ import { mailService } from '../services/mail.service.js'
 
 import mailHeader from '../cmps/mail-header.cmp.js'
 import mailList from '../cmps/mail-list.cmp.js'
+import mailAside from '../cmps/mail-aside.cmp.js'
 
 export default {
     template: `
+        <mail-header/>
     <main class="mail-index">
-        <mail-header />
-        <mail-list 
+        <mail-aside
+        @filter="filter"
+        :criteria="criteria" />
+
+        <mail-list
+        v-if="mails" 
         :mails="mailsToShow"
         :criteria="criteria"
         />
@@ -25,20 +31,26 @@ export default {
         return {
             mails: null,
             user: mailService.getUser(),
-            criteria: mailService.getCriteria(),
+            criteria: {},
         }
     },
     methods: {
-
+        filter(filterBy){
+            this.criteria = filterBy
+            console.log(this.criteria);
+        }
     },
     computed: {
         mailsToShow() {
-            return this.mails
+            const regex = new RegExp(this.criteria.txt, 'i')
+            var mails = this.mails.filter(mail => regex.test(mail.subject))
+            return mails
         }
     },
     components: {
         mailList,
         mailHeader,
+        mailAside
     }
 
 }

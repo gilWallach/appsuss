@@ -8,6 +8,7 @@ export const mailService = {
     get,
     deleteMail,
     save,
+    getEmptyCriteria
 }
 const MAILS_KEY = 'mailsDB'
 const USER_KEY = 'userDB'
@@ -50,6 +51,16 @@ const loggedinUser = {
 
 
 // filterBy
+
+function getEmptyCriteria(){
+    return {
+        status:'',
+        txt:'',
+        isRead:false,
+        isStared:false,
+        labels:[]
+    }
+}
 const criteria = {
     status: 'inbox/sent/trash/draft',
     txt: 'puki', // no need to support complex text search

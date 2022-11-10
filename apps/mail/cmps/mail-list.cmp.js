@@ -1,15 +1,12 @@
 // ? add id to is Selected checkbox
 
-import mailActions from '../cmps/mail-actions.cmp.js'
-import mailAside from '../cmps/mail-aside.cmp.js'
 import mailPreview from '../cmps/mail-preview.cmp.js'
 
 // wrap tr with <a>, router link with stop proppagation
 export default {
-    props: ['mails', 'criteria'],
+    props: ['mails'],
     template: `
         <section class="mail-list-container flex">
-            <mail-aside :criteria="criteria" :mails="mails" />
             <div className="mail-list-table">
 
                 <table class="mail-list"> 
@@ -17,6 +14,7 @@ export default {
                             :class="{ bold: !mail.isRead }" 
                             key="mail.id">
                                 <mail-preview :mail="mail" />
+                        </tr>        
                 </table>
             </div>
         </section>    
@@ -27,6 +25,5 @@ export default {
     components: {
         mailActions,
         mailPreview,
-        mailAside,
     }
 }

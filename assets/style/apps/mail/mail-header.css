@@ -22,6 +22,11 @@
     margin-inline: 10px;
 }
 
+.header-sec .left img.keep-logo{
+    width: auto;
+    height: 46px;
+}
+
 .header-sec .left h2{
     margin-bottom: 0;
 }

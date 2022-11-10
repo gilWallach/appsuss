@@ -35,7 +35,7 @@ export default {
             this.mails.map(mail => {
                 if (mail.isRead) counter++
             })
-            return  counter
+            return  counter === 0 ? '' : counter
         }
     },
     watch:{

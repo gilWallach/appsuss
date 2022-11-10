@@ -5,17 +5,21 @@ export default {
     emits: ['deleted'],
     props: ['mail'],
     template: `
-        <td><input type="checkbox" name="isSelected"></td>
+        <!-- <td><input type="checkbox" name="isSelected"></td> -->
         <td class="starred"><i class="fa fa-thin fa-star"></i></td>
-        <router-link class="flex button" :to="'/mail/' + mail.id" >
+        <router-link @toggleIsRead="toggleIsRead" class="flex button" :to="'/mail/' + mail.id" >
             <td class="from"><span>{{ fromFormat }}</span></td>
             <td class="subject"><span>{{ mail.subject }}</span></td>   
             <td class><span>{{ sentAtFormat }}</span></td>
+            <td class="actions">
+                <button @click.stop="deleteMail" class="delete-btn" title="delete mail"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button @click.stop="toggleIsRead"
+                        class="isRead-btn" 
+                        title="mark as unread">
+                        <i :class="isReadStyle" aria-hidden="true"></i>
+                </button>
+            </td>
         </router-link>
-        <td class="actions">
-            <button @click="deleteMail" class="delete-btn" title="delete mail"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-            <button @click="toggleIsRead" class="isRead-btn" title="mark as unread"><i :class="isReadStyle" aria-hidden="true"></i></button>
-        </td>
     `,
         methods: {
             deleteMail() {

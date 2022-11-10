@@ -11,8 +11,8 @@ export default {
             <div className="mail-list-table">
 
                 <table class="mail-list"> 
-                        <tr class="list-item" v-for="mail in mails" 
-                            :class="{ bold: !mail.isRead }" 
+                        <tr class="list-item flex align-center" v-for="mail in mails" 
+                            :class="{ read: !mail.isRead }" 
                             key="mail.id">
                                 <mail-preview :mail="mail" @deleted="deleted"/>
                         </tr>        

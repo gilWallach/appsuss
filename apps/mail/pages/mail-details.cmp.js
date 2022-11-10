@@ -9,16 +9,21 @@ import mailActions from '../cmps/mail-actions.cmp.js'
 export default {
     template: `
     <section v-if="mail" class="details">
-        <mail-actions :mail="mail" />
-    <div className="details-header">
-        <h2>{{ mail.subject }}</h2>
+        <div className="header-container">
+            <mail-actions :mail="mail" />
+            <h2>{{ mail.subject }}</h2>
+        </div>
+    <div className="details-info flex">
+        <img src="assets/img/icons/user-icon.png" alt="user-icon.png" />
+        <div class="details-from-to-container flex">
+            <div>
+                <p className="details-from"> {{ fromFormated }}</p>
+                <p className="details-to"> {{ sentToFormat }} </p>
+            </div>
+            <p className="details-time"> {{ sentAtFormat }} </p>
+        </div>
     </div>
-    <div className="details-content">
-        <div className="details-from"> {{ mail.from }} </div>
-        <div className="details-from"> {{ sentToFormat }} </div>
-        <div className="details-from"> {{ sentAtFormat }} </div>
-        <div className="details-content"> {{ mail.body }} </div>
-    </div>
+    <div className="details-content"> {{ mail.body }} </div>
     </section>
     `,
     created() {
@@ -49,6 +54,10 @@ export default {
             const { to } = this.mail
             if (to === mailService.getUser().mail) return 'me'
             return to.substring(0, to.indexOf('@'))
+        },
+        fromFormated() {
+            const { from } = this.mail
+            return from.substring(0, from.indexOf('@'))
         }
     },
     components: {

@@ -2,6 +2,7 @@
 import { mailService } from '../services/mail.service.js'
 
 export default {
+    emits: ['deleted'],
     props: ['mail'],
     template: `
         <td><input type="checkbox" name="isSelected"></td>
@@ -10,16 +11,19 @@ export default {
             <td class="from"><span>{{ fromFormat }}</span></td>
             <td class="subject"><span>{{ mail.subject }}</span></td>   
             <td class><span>{{ sentAtFormat }}</span></td>
-            <td class="actions">
-                <button @click="deleteMail" class="delete-btn" title="delete mail"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                <button @click="toggleIsRead" class="isRead-btn" title="mark as unread"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
-            </td>
         </router-link>
+        <td class="actions">
+            <button @click="deleteMail" class="delete-btn" title="delete mail"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            <button @click="toggleIsRead" class="isRead-btn" title="mark as unread"><i :class="isReadStyle" aria-hidden="true"></i></button>
+        </td>
     `,
         methods: {
             deleteMail() {
                 mailService.deleteMail(this.mail.id)
-                    .then(() => this.$router.push('/mail'))
+                .then(() => {
+                    this.$emit('deleted')
+                }
+                )
             },
             toggleIsRead() {
                 this.mail.isRead = !this.mail.isRead
@@ -33,5 +37,11 @@ export default {
         sentAtFormat(){
             return new Date(this.mail.sentAt).toString().slice(0, 10)
         },
+        isReadStyle(){
+            return {
+                'fa fa-envelope-open-o': this.mail.isRead,
+                'fa fa-envelope-o': !this.mail.isRead
+              }
+        }
     }
 }

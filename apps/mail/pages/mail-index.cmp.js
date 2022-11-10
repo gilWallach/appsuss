@@ -19,6 +19,7 @@ export default {
         v-if="mails" 
         :mails="mailsToShow"
         :criteria="criteria"
+        @deleted="updatedMailList"
         />
     </main>
     `,
@@ -38,6 +39,12 @@ export default {
     methods: {
         filter(filterBy) {
             this.criteria = filterBy
+        },
+        updatedMailList(){
+            mailService.query()
+            .then(mails => {
+                this.mails = mails
+            })
         }
     },
     computed: {

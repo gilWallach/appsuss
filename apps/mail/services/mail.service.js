@@ -88,7 +88,7 @@ function get(mailId) {
   }
 
   function deleteMail(mailId) {
-    return storageService.remove(MAILS_KEY, mailId)
+      return storageService.remove(MAILS_KEY, mailId)
   }
 
   function save(mail) {

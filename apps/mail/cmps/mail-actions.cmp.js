@@ -12,13 +12,6 @@ export default {
     methods: {
         deleteMail() {
             mailService.deleteMail(this.mail.id)
-                .then(() => this.$router.push('/mail'))
-        },
-        backToList() {
-            console.log(this.mail)
-            // mailService.save(this.mail)
-            //     .then(() => this.$router.push('/mail'))
-            this.$router.push('/mail')
         },
         toggleIsRead() {
             this.mail.isRead = !this.mail.isRead

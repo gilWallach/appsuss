@@ -13,10 +13,9 @@ export default {
 
                 <table class="mail-list"> 
                         <tr class="list-item" v-for="mail in mails" 
-                            :class="{ bold: mail.isRead }" 
+                            :class="{ bold: !mail.isRead }" 
                             key="mail.id">
                                 <mail-preview :mail="mail" />
-                        </tr>
                 </table>
             </div>
         </section>    

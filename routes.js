@@ -10,6 +10,7 @@ import mailDetails from './apps/mail/pages/mail-details.cmp.js'
 
 //keep
 import keepDetails from './apps/keep/pages/note-details.cmp.js'
+import mailList from './apps/mail/cmps/mail-list.cmp.js'
 
 
 const { createRouter, createWebHashHistory } = VueRouter
@@ -38,7 +39,7 @@ const routerOptions = {
 		},
 		{
 			path: '/mail/:id',
-			component: mailDetails
+			component: mailDetails,
 		},
 
 		// keep routes

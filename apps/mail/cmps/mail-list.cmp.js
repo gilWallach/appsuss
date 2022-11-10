@@ -1,5 +1,6 @@
 // ? add id to is Selected checkbox
 
+import mailActions from '../cmps/mail-actions.cmp.js'
 import mailAside from '../cmps/mail-aside.cmp.js'
 import mailPreview from '../cmps/mail-preview.cmp.js'
 
@@ -8,7 +9,7 @@ export default {
     props: ['mails', 'criteria'],
     template: `
         <section class="mail-list-container flex">
-            <mail-aside :criteria="criteria" />
+            <mail-aside :criteria="criteria" :mails="mails" />
             <div className="mail-list-table">
 
                 <table class="mail-list"> 
@@ -24,6 +25,7 @@ export default {
 
     },
     components: {
+        mailActions,
         mailPreview,
         mailAside,
     }

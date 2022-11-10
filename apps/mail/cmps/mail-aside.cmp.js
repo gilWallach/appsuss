@@ -2,7 +2,7 @@ import mailEdit from '../cmps/mail-edit.cmp.js'
 import mailFilter from '../cmps/mail-filter.cmp.js'
 
 export default {
-    props: ['criteria'],
+    props: ['criteria', 'mails',],
     
     template: `
     <section class="aside-continer">
@@ -15,7 +15,7 @@ export default {
 
         </div>
         <div className="mail-filter-container">
-            <mail-filter :criterias="criteria"/>
+            <mail-filter :criterias="criteria" :mails="mails"/>
         </div>
     </section>
     `,

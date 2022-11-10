@@ -1,5 +1,5 @@
 // ? isRead formatting
-// class bold to tr
+import { mailService } from '../services/mail.service.js'
 
 export default {
     props: ['mail'],
@@ -9,17 +9,22 @@ export default {
         <router-link class="flex" :to="'/mail/' + mail.id" class="button">
             <td class="from"><span>{{ fromFormat }}</span></td>
             <td class="subject"><span>{{ mail.subject }}</span></td>   
-            <td class><span>{{ sentAtFormat }}</span></td>             
+            <td class><span>{{ sentAtFormat }}</span></td>
+            <td class="actions">
+                <button @click="deleteMail" class="delete-btn" title="delete mail"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button @click="toggleIsRead" class="isRead-btn" title="mark as unread"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+            </td>
         </router-link>
     `,
-    data(){
-        return {
-
-        }
-    },
-    methods: {
-
-    },
+        methods: {
+            deleteMail() {
+                mailService.deleteMail(this.mail.id)
+                    .then(() => this.$router.push('/mail'))
+            },
+            toggleIsRead() {
+                this.mail.isRead = !this.mail.isRead
+            },
+        },
     computed: {
         fromFormat(){
             const { from } = this.mail

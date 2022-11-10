@@ -1,7 +1,9 @@
 import { mailService } from '../services/mail.service.js'
 
 export default {
+    props: ['mail'],
     template: `
+    <!-- <h1>{{mail}}</h1> -->
     <div className="detail-actions">
         <button @click="backToList" class="back-btn" title="back to inbox"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
         <button @click="deleteMail" class="delete-btn" title="delete mail"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
@@ -21,23 +23,4 @@ export default {
             this.mail.isRead = !this.mail.isRead
         },
     },
-    data(){
-        return {
-            mail: null
-        }
-    },
-    methods:{
-        loadMail() {
-            mailService.get(this.mailId)
-                .then(mail => {
-                    this.mail = mail
-                    this.mail.isRead = true
-                })
-        },
-    },
-    computed: {
-        mailId() {
-            return this.$route.params.id
-        },
-    }
 }

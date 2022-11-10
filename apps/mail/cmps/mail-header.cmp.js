@@ -15,8 +15,8 @@ export default {
                     v-model="input"/>
         </div>
         <div class="right flex">
-            <img clas="menu" src="../../../assets/img/icons/icons-circled-menu.png" alt="icons-circled-menu" />        
-            <img src="../../../assets/img/icons/user-icon.png" alt="user-icon.png" />
+            <img clas="menu" src="assets/img/icons/icons-circled-menu.png" alt="icons-circled-menu" />        
+            <img src="assets/img/icons/user-icon.png" alt="user-icon.png" />
             <!-- Todos: set our icons   -->
 
         </div>
@@ -37,8 +37,8 @@ export default {
             return (this.type) ? 'Keep' : 'Gmail'
         },
         setLogo() {
-            return (this.type) ? '../../../assets/img/icons/keep.png'
-                : '../../../assets/img/icons/Gmail-Logo.png'
+            return (this.type) ? 'assets/img/icons/keep.png'
+                : 'assets/img/icons/Gmail-Logo.png'
         },
         setClass() {
             if (this.type) return 'keep-logo'

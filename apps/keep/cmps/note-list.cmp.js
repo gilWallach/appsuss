@@ -9,6 +9,7 @@ export default {
     emits: ['property-change', 'remove'],
     template: `
         <section className="list-container main-layout">
+            <h3>{{subtitle}}</h3>
             <ul class="notes-list clean-list">
                 <li class="note-item" v-for="note in notes" :style="styleNote(note)">
                     <h3 v-if="note.info.title">{{note.info.title}}</h3>

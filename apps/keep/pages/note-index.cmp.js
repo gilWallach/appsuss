@@ -18,12 +18,13 @@ export default {
     <note-filter
     @filter="setFilter"
     />
-    <note-edit
-    @note-saved="saveNote"/>
 
     <main class="main-app">
         <note-aside/>
-        <div className="note-lists">
+        <div className="content-container">
+            <note-edit
+            @note-saved="saveNote"/>
+
             <note-list
             v-if="pinnedNotes"
             @remove="removeNote"
@@ -76,7 +77,7 @@ export default {
         }
     },
     computed: {
-        notesToShow(){
+        notesToShow() {
             const regex = new RegExp(this.filterBy.txt, 'i')
             var notes = this.notes.filter(note => regex.test(note.info.txt))
             // notes = notes.filter(note => note.maxSpeed > this.filterBy.minSpeed)
@@ -86,7 +87,7 @@ export default {
             const filteredNotes = this.notesToShow
             return filteredNotes.filter(note => note.isPinned)
         },
-        unPinnedNotesToShow(){
+        unPinnedNotesToShow() {
             const filteredNotes = this.notesToShow
             return filteredNotes.filter(note => !note.isPinned)
         }

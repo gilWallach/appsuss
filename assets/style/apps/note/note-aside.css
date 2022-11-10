@@ -1,0 +1,36 @@
+.main-app .aside{
+    width: 100%;
+}
+
+.main-app .aside ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-app .aside a{
+    display: flex;
+    min-height: 48px;
+    min-width: 48px;
+    width: 100%;
+    align-items: center;
+    padding-inline-start: 20px;
+    border-radius: 0 2em 2em 0;
+}
+
+.main-app .aside a span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 48px;
+    font-size: 1.5rem;
+    padding-inline-end: 20px;
+}
+
+.main-app .aside i{
+
+}
+
+.main-app .aside .router-link-exact-active{
+    background-color: var(--secondary-clr5);
+}

@@ -11,9 +11,11 @@
   --secondary-clr3: #c2e7ff;
   --secondary-clr4: #d3e3fd;
 
+  --secondary-clr5: #feefc3;
+
 
   /* screen sizes */
-  --l:1080px;
+  --l: 1080px;
   --m: 780px;
-  
-} 
+
+}

@@ -1,5 +1,14 @@
 export default {
     template:`
-    <h1>Hello from Filter</h1>
-    `
+    <section className="note-filter">
+        <input v-model="filterBy.txt" type="text" />
+    </section>
+    `,
+    data(){
+        return {
+            filterBy:{
+                txt:''
+            }
+        }
+    }
 }

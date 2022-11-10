@@ -1,0 +1,3 @@
+.note-edit .action-btns button:not(.active){
+    color: var(--clr3);
+}

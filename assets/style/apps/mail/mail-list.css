@@ -9,6 +9,10 @@
     width: 100%;
 }
 
+.mail-list-container{
+  overflow: scroll;
+}
+
 .list-item {
     justify-content: space-between;
     cursor: pointer;

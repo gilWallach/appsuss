@@ -3,7 +3,6 @@ export default {
     emits:['toggle'],
     name:"todos",
     template:`
-    <h2>my todo list</h2>
     <div className="todos-list" v-for="todo in info.todos">
         <input type="checkbox" id="checkbox" :checked="todo.doneAt" @change="toggle(todo)" />
         <label>{{ todo.txt }}</label>

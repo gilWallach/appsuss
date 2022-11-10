@@ -10,7 +10,8 @@ export default {
     name:'note-index',
     template: `
     <note-filter/>
-    <note-edit/>
+    <note-edit
+    @note-saved="saveNote"/>
     <note-list
     @remove="removeNote"
     @property-change="saveNote"
@@ -31,6 +32,7 @@ export default {
         },
         saveNote(note){
             noteService.save(note)
+            .then(()=>this.loadNotes())
         },
         removeNote(noteId){
             noteService.remove(noteId)

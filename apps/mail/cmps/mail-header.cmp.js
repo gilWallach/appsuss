@@ -34,7 +34,6 @@ export default {
     },
     computed: {
         setHeader() {
-            console.log(this.type);
             return (this.type) ? 'Keep' : 'Gmail'
         },
         setLogo() {

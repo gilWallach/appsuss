@@ -5,10 +5,32 @@
     justify-content: center;
 }
 
+.list-container > :first-child{
+    align-self: flex-start;
+    font-size: 0.6875rem;
+    padding-inline-start: 1.25rem;
+}
+
 .notes-list {
-    column-count: auto;
-    column-width: 150px;
+    column-count: 1;
+    column-width: 100px;
     column-gap: 5px;
+}
+
+@media (min-width:610px){
+    .notes-list {
+        column-count: 2;
+    }
+}
+@media (min-width:820px){
+    .notes-list {
+        column-count: 3;
+    }
+}
+@media (min-width:1020px){
+    .notes-list {
+        column-count: 5;
+    }
 }
 
 .notes-list>li {
@@ -17,6 +39,8 @@
     break-inside: avoid-column;
     padding: 10px;
     margin-bottom: 5px;
+    position: relative;
+
 }
 
 .notes-list .action-btns {
@@ -24,6 +48,7 @@
     grid-template-columns: repeat(auto-fill, minmax(22px, 1fr));
     opacity: 0;
     transition: 0.8s;
+    align-items: center;
 }
 
 .notes-list>li:hover .action-btns {
@@ -32,5 +57,18 @@
 
 .notes-list .action-btns input {
     opacity: 0;
+    width: 0;
+    height: 0;
     position: absolute;
+}
+
+.notes-list .action-btns button.pin{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.notes-list .action-btns button{
+    background-color: transparent;
+    border: 0;
 }

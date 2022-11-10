@@ -4,20 +4,21 @@
 import notePreview from "./note-preview.cmp.js"
 
 export default {
-    props:['notes'],
-    name:'note-list',
-    emits:['property-change','remove'],
-    template:`
-    <section className="list-container">
-        <h1>Hello from note list</h1>
-        <ul class="notes-list clean-list main-layout">
+    props: ['notes', 'subtitle'],
+    name: 'note-list',
+    emits: ['property-change', 'remove'],
+    template: `
+    <section className="list-container main-layout">
+        <h3 >{{subtitle}}</h3>
+        <ul class="notes-list clean-list">
             <li class="note-item" v-for="note in notes" :style="styleNote(note)">
                 <h3 v-if="note.info.title">{{note.info.title}}</h3>
-                <note-preview :note="note"/>
+                <note-preview @save="save" :note="note"/>
                 <div className="action-btns">
-                    <label htmlFor="color"><img src="assets/img/icons/paint-palette.svg" alt="" /></label>
-                    <input type="color" className="btn" id="color" v-model="note.style.backgroundColor" @change="save(note)"/>  
-                    <button @click="remove(note.id)">X</button>  
+                    <button class="pin" @click="togglePin(note)" :title="setTitle">{{isPinned}}</button>
+                    <label htmlFor="color" class="btn" >🎨</label>
+                    <input @change="save(note)" v-model="note.style.backgroundColor" type="color" className="btn" id="color" title="Change background color"/>  
+                    <button @click="remove(note.id)" title="remove note"><i class="fa fa-trash-o" aria-hidden="true"></i></button>  
                 </div>
             </li>
         </ul>
@@ -25,17 +26,30 @@ export default {
     `,
     methods:
     {
-        styleNote(note){
-            return {backgroundColor:note.style.backgroundColor}
+        styleNote(note) {
+            return { backgroundColor: note.style.backgroundColor }
         },
-        save(note){
-            this.$emit('property-change',note)
+        save(note) {
+            this.$emit('property-change', note)
         },
-        remove(noteId){
-            this.$emit('remove',noteId)
+        remove(noteId) {
+            console.log('removing',noteId);
+            this.$emit('remove', noteId)
+        },
+        togglePin(note){
+            note.isPinned = !note.isPinned
+            this.save(note)
         }
     },
-    components:{
+    computed:{
+        isPinned(){
+         return ( this.subtitle === 'PINNED') ? '🔕' : `🔔`
+        },
+        setTitle(){
+            return ( this.subtitle === 'PINNED') ? 'Unpin note' : 'Pin note'
+        }
+    },
+    components: {
         notePreview,
     }
 }

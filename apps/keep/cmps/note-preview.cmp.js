@@ -3,24 +3,24 @@ import noteImg from "./note-img.cmp.js"
 import noteTodos from "./note-todos.cmp.js"
 import noteVideo from "./note-video.cmp.js"
 
-import { noteService } from "../services/note.service.js"
-
 export default {
-    props:['note'],
-    name:'note-preview',
-    template:`
+    props: ['note'],
+    emits:['save'],
+    name: 'note-preview',
+    template: `
     <component 
     :is=note.type
     :info= note.info
     @toggle="saveNote">
     </component>
+
     `,
-    methods:{
-        saveNote(){
-            noteService.save(this.note)
-        }
+    methods: {
+        saveNote() {
+            this.$emit('save',this.note)
+        },
     },
-    components:{
+    components: {
         noteTxt,
         noteImg,
         noteTodos,

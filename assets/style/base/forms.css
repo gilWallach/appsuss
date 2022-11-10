@@ -1,4 +1,4 @@
-button {
+button,.btn {
     cursor: pointer;
     color: var(--clr5);
 }

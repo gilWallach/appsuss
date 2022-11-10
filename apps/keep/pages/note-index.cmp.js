@@ -7,39 +7,76 @@ import noteList from "../cmps/note-list.cmp.js"
 import noteEdit from "../cmps/note-edit.cmp.js"
 
 export default {
-    name:'note-index',
+    name: 'note-index',
     template: `
-    <note-filter/>
+    <note-filter
+    @filter="setFilter"
+    />
     <note-edit
     @note-saved="saveNote"/>
+
     <note-list
+    v-if="pinnedNotes"
     @remove="removeNote"
     @property-change="saveNote"
-    :notes="notes"/>
+    :notes="pinnedNotesToShow"
+    :subtitle="'PINNED'"/>
+
+    <note-list
+    v-if="unPinnedNotes"
+    @remove="removeNote"
+    @property-change="saveNote"
+    :notes="unPinnedNotesToShow"
+    :subtitle="'OTHERS'"/>
     `,
-    data(){
+    data() {
         return {
-            notes:null,
+            notes: null,
+            pinnedNotes: null,
+            unPinnedNotes: null,
+            filterBy: {}
         }
     },
-    created(){
+    created() {
         this.loadNotes()
     },
-    methods:{
-        loadNotes(){
+    methods: {
+        loadNotes() {
             noteService.query()
-            .then(notes=> this.notes = notes)
+                .then(notes => {
+                    this.notes = notes
+                    console.log(notes);
+                    this.pinnedNotes = notes.filter(note => note.isPinned)
+                    this.unPinnedNotes = notes.filter(note => !note.isPinned)
+                }
+                )
         },
-        saveNote(note){
+        saveNote(note) {
             noteService.save(note)
-            .then(()=>this.loadNotes())
+                .then(() => this.loadNotes())
         },
-        removeNote(noteId){
+        removeNote(noteId) {
             noteService.remove(noteId)
-            .then(()=>{
-                const idx = this.notes.findIndex(note=>note.id === noteId)
-                this.notes.splice(idx,1)
-            })
+                .then(() => this.loadNotes())
+        },
+        setFilter(filterBy) {
+            this.filterBy = filterBy
+        }
+    },
+    computed: {
+        notesToShow(){
+            const regex = new RegExp(this.filterBy.txt, 'i')
+            var notes = this.notes.filter(note => regex.test(note.info.txt))
+            // notes = notes.filter(note => note.maxSpeed > this.filterBy.minSpeed)
+            return notes
+        },
+        pinnedNotesToShow() {
+            const filteredNotes = this.notesToShow
+            return filteredNotes.filter(note => note.isPinned)
+        },
+        unPinnedNotesToShow(){
+            const filteredNotes = this.notesToShow
+            return filteredNotes.filter(note => !note.isPinned)
         }
     },
     components: {

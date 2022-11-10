@@ -14,7 +14,8 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
-    getNextNoteId
+    getNextNoteId,
+    getColors
 }
 
 function query() {
@@ -40,6 +41,16 @@ function save(note) {
 function getEmptyNote(type = 'note-txt', isPinned = false, info = { txt: "" },
     style = { backgroundColor: "#fff" }) {
     return { id: '', type, isPinned, info, style }
+}
+
+function getColors(){
+    return [
+        ['#FF0000', '#AA0000', '#550000'],
+        ['#FFFF00', '#AAAA00', '#555500'],
+        ['#00FF00', '#00AA00', '#005500'],
+        ['#00FFFF', '#00AAAA', '#005555'],
+        ['#0000FF', '#0000AA', '#000055'],
+      ]
 }
 
 

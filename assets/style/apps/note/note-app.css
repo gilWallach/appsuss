@@ -4,4 +4,6 @@ main .content-container{
     align-items: center;
     justify-content: center;
     gap: 40px;
+    flex-grow: 1;
+    flex-basis: 70%;
 }

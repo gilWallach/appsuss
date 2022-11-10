@@ -30,6 +30,7 @@ const routerOptions = {
 		{
 			path: '/mail',
 			component: mailApp,
+			name:'mail',
 			children: [
 				{
 					path: '/mail/mail-edit:?id',
@@ -46,6 +47,7 @@ const routerOptions = {
 		{
 			path: '/keep',
 			component: keepApp,
+			name:'keep',
 			children: [
 				{
 					path: '/keep/keep-details:?id', // dynamic child component + object with cmps in service (smart cmp)

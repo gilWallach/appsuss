@@ -6,28 +6,40 @@ import noteFilter from "../cmps/note-filter.cmp.js"
 import noteList from "../cmps/note-list.cmp.js"
 import noteEdit from "../cmps/note-edit.cmp.js"
 
+import mailHeader from "../../mail/cmps/mail-header.cmp.js"
+import noteAside from "../cmps/note-aside.cmp.js"
+
+
 export default {
     name: 'note-index',
     template: `
+
+    <mail-header :type="'keep'"/>
     <note-filter
     @filter="setFilter"
     />
     <note-edit
     @note-saved="saveNote"/>
 
-    <note-list
-    v-if="pinnedNotes"
-    @remove="removeNote"
-    @property-change="saveNote"
-    :notes="pinnedNotesToShow"
-    :subtitle="'PINNED'"/>
+    <main class="main-app">
+        <note-aside/>
+        <div className="note-lists">
+            <note-list
+            v-if="pinnedNotes"
+            @remove="removeNote"
+            @property-change="saveNote"
+            :notes="pinnedNotesToShow"
+            :subtitle="'PINNED'"/>
+        
+            <note-list
+            v-if="unPinnedNotes"
+            @remove="removeNote"
+            @property-change="saveNote"
+            :notes="unPinnedNotesToShow"
+            :subtitle="'OTHERS'"/>
+        </div>
+    </main>
 
-    <note-list
-    v-if="unPinnedNotes"
-    @remove="removeNote"
-    @property-change="saveNote"
-    :notes="unPinnedNotesToShow"
-    :subtitle="'OTHERS'"/>
     `,
     data() {
         return {
@@ -83,5 +95,7 @@ export default {
         noteFilter,
         noteList,
         noteEdit,
+        mailHeader,
+        noteAside
     }
 }

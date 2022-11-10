@@ -8,21 +8,20 @@ export default {
     name: 'note-list',
     emits: ['property-change', 'remove'],
     template: `
-    <section className="list-container main-layout">
-        <h3 >{{subtitle}}</h3>
-        <ul class="notes-list clean-list">
-            <li class="note-item" v-for="note in notes" :style="styleNote(note)">
-                <h3 v-if="note.info.title">{{note.info.title}}</h3>
-                <note-preview @save="save" :note="note"/>
-                <div className="action-btns">
-                    <button class="pin" @click="togglePin(note)" :title="setTitle">{{isPinned}}</button>
-                    <label htmlFor="color" class="btn" >🎨</label>
-                    <input @change="save(note)" v-model="note.style.backgroundColor" type="color" className="btn" id="color" title="Change background color"/>  
-                    <button @click="remove(note.id)" title="remove note"><i class="fa fa-trash-o" aria-hidden="true"></i></button>  
-                </div>
-            </li>
-        </ul>
-    </section>
+        <section className="list-container main-layout">
+            <ul class="notes-list clean-list">
+                <li class="note-item" v-for="note in notes" :style="styleNote(note)">
+                    <h3 v-if="note.info.title">{{note.info.title}}</h3>
+                    <note-preview @save="save" :note="note"/>
+                    <div className="action-btns">
+                        <button class="pin" @click="togglePin(note)" :title="setTitle">{{isPinned}}</button>
+                        <label htmlFor="color" class="btn" >🎨</label>
+                        <input @change="save(note)" v-model="note.style.backgroundColor" type="color" className="btn" id="color" title="Change background color"/>  
+                        <button @click="remove(note.id)" title="remove note"><i class="fa fa-trash-o" aria-hidden="true"></i></button>  
+                    </div>
+                </li>
+            </ul>
+        </section>
     `,
     methods:
     {

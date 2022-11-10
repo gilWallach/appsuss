@@ -12,7 +12,8 @@ export default {
     <main class="mail-index">
         <mail-aside
         @filter="filter"
-        :criteria="criteria" />
+        :criteria="criteria"
+        :mails="mails" />
 
         <mail-list
         v-if="mails" 
@@ -35,9 +36,8 @@ export default {
         }
     },
     methods: {
-        filter(filterBy){
+        filter(filterBy) {
             this.criteria = filterBy
-            console.log(this.criteria);
         }
     },
     computed: {

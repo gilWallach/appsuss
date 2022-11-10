@@ -15,7 +15,9 @@ export default {
 
         </div>
         <div className="mail-filter-container">
-            <mail-filter :criterias="criteria" @filter="filter"/>
+            <mail-filter :criterias="criteria"
+            :mails="mails"
+            @filter="filter"/>
         </div>
     </section>
     `,

@@ -4,9 +4,9 @@ import { mailService } from '../services/mail.service.js'
 export default {
     props: ['mail'],
     template: `
-        <td class="checkbox"><input type="checkbox" id="isSelected" name="isSelected"></td>
+        <td><input type="checkbox" name="isSelected"></td>
         <td class="starred"><i class="fa fa-thin fa-star"></i></td>
-        <router-link class="flex" :to="'/mail/' + mail.id" class="button">
+        <router-link class="flex button" :to="'/mail/' + mail.id" >
             <td class="from"><span>{{ fromFormat }}</span></td>
             <td class="subject"><span>{{ mail.subject }}</span></td>   
             <td class><span>{{ sentAtFormat }}</span></td>

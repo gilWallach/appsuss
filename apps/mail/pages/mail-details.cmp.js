@@ -8,6 +8,7 @@ import mailActions from '../cmps/mail-actions.cmp.js'
 
 export default {
     template: `
+    <section v-if="mail" class="details">
         <mail-actions :mail="mail" />
     <div className="details-header">
         <h2>{{ mail.subject }}</h2>
@@ -18,6 +19,7 @@ export default {
         <div className="details-from"> {{ sentAtFormat }} </div>
         <div className="details-content"> {{ mail.body }} </div>
     </div>
+    </section>
     `,
     created() {
         this.loadMail()

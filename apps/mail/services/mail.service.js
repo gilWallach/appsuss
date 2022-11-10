@@ -5,7 +5,9 @@ export const mailService = {
     query,
     getUser,
     getCriteria,
-
+    get,
+    deleteMail,
+    save,
 }
 const MAILS_KEY = 'mailsDB'
 const USER_KEY = 'userDB'
@@ -31,15 +33,15 @@ const gMails = [
     },
 ]
 
-const mail = {
-    id: 'e101',
-    subject: 'Miss you!',
-    body: 'Would love to catch up sometimes',
-    isRead: false,
-    sentAt: 1551133930594,
-    from: 'momo@momo.com',
-    to: 'user@appsus.com'
-}
+// const mail = {
+//     id: 'e101',
+//     subject: 'Miss you!',
+//     body: 'Would love to catch up sometimes',
+//     isRead: false,
+//     sentAt: 1551133930594,
+//     from: 'momo@momo.com',
+//     to: 'user@appsus.com'
+// }
 
 const loggedinUser = {
     mail: 'user@appsus.com',
@@ -68,6 +70,22 @@ function getUser() {
 
 function getCriteria() {
     return criteria
+}
+
+function get(mailId) {
+    return storageService.get(MAILS_KEY, mailId)
+  }
+
+  function deleteMail(mailId) {
+    return storageService.remove(MAILS_KEY, mailId)
+  }
+
+  function save(mail) {
+    if(mail.id){
+        return storageService.put(MAILS_KEY, mail)
+    } else {
+        return storageService.post(MAILS_KEY, mail)
+    }
 }
 
 function _createMails() {

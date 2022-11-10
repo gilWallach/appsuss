@@ -7,7 +7,12 @@ export default {
     template: `
     <section class="aside-continer">
         <div className="mail-add-container">
-            <mail-edit />
+        <router-link to="/mail/mail-edit/">
+            <button class="add-mail flex align-center">
+                <i class="fa fa-pencil" aria-hidden="true"></i>Compose
+            </button>            
+        </router-link>
+
         </div>
         <div className="mail-filter-container">
             <mail-filter :criterias="criteria"/>

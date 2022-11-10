@@ -6,9 +6,11 @@ export default {
     template: `
         <td class="checkbox"><input type="checkbox" id="isSelected" name="isSelected"></td>
         <td class="starred"><i class="fa fa-thin fa-star"></i></td>
-        <td class="from"><span>{{ fromFormat }}</span></td>
-        <td class="subject"><span>{{ mail.subject }}</span></td>   
-        <td class><span>{{ sentAtFormat }}</span></td>   
+        <router-link class="flex" :to="'/mail/' + mail.id" class="button">
+            <td class="from"><span>{{ fromFormat }}</span></td>
+            <td class="subject"><span>{{ mail.subject }}</span></td>   
+            <td class><span>{{ sentAtFormat }}</span></td>             
+        </router-link>
     `,
     data(){
         return {
@@ -24,7 +26,7 @@ export default {
             return from.substring(0, from.indexOf('@')); 
         },
         sentAtFormat(){
-            return new Date(this.mail.sentAt).toTimeString().slice(0, 5)
+            return new Date(this.mail.sentAt).toString().slice(0, 10)
         },
     }
 }

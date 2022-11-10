@@ -5,8 +5,14 @@
 .checkbox input{
     cursor: pointer;
 }
+.list-item {
+}
+.list-item a{
+    display: grid;
+    grid-template-columns: .5fr 1fr .2fr;
+}
 .subject, .from{
-    flex-basis: 0;
+    /* flex-basis: 0; */
     flex-grow: 1;
     flex-shrink: 1;
 }

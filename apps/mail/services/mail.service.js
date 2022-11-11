@@ -8,7 +8,8 @@ export const mailService = {
     get,
     deleteMail,
     save,
-    getEmptyCriteria
+    getEmptyCriteria,
+    getEmptyMail,
 }
 const MAILS_KEY = 'mailsDB'
 const USER_KEY = 'userDB'

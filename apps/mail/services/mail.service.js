@@ -22,7 +22,8 @@ const gMails = [
         isRead: false,
         sentAt: 1551133930594,
         from: 'momo@momo.com',
-        to: 'user@appsus.com'
+        to: 'user@appsus.com',
+        labels:['work','party']
     },
     {
         id: 'e102',
@@ -31,7 +32,8 @@ const gMails = [
         isRead: true,
         sentAt: 155112390594,
         from: 'momo@momo.com',
-        to: 'user@appsus.com'
+        to: 'user@appsus.com',
+        labels:['romantic','work']
     },
 ]
 

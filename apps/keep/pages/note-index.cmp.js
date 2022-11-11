@@ -12,6 +12,7 @@ import noteAside from "../cmps/note-aside.cmp.js"
 
 export default {
     name: 'note-index',
+    props:['aside'],
     template: `
 
     <!-- <mail-header :type="'keep'"/> -->
@@ -19,7 +20,7 @@ export default {
     @filter="setFilter"
     />
 
-    <main class="main-app">
+    <main class="main-app" :class="{open:aside}">
         <note-aside/>
         <div className="content-container">
             <note-edit
@@ -52,6 +53,7 @@ export default {
     },
     created() {
         this.loadNotes()
+        console.log(this.aside);
     },
     methods: {
         loadNotes() {

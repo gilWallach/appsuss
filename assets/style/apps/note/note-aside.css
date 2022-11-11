@@ -14,8 +14,11 @@
     min-width: 48px;
     width: 100%;
     align-items: center;
-    padding-inline-start: 20px;
-    border-radius: 0 2em 2em 0;
+    width: 25%;
+    overflow: hidden;
+    width: 10px;
+    margin-left: 10px;
+    border-radius: 50%;
 }
 
 .main-app .aside a span{
@@ -25,7 +28,24 @@
     height: 48px;
     width: 48px;
     font-size: 1.5rem;
-    padding-inline-end: 20px;
+    /* padding-inline-end: 20px; */
+}
+
+.main-app .aside .aside-txt{
+    opacity: 0;
+    display: none;
+}
+
+.open .main-app .aside .aside-txt{
+    opacity: 1;
+    display: block;
+}
+
+.open .main-app .aside a{
+    width: 100%;
+    border-radius: 0 2em 2em 0;
+    margin-left: 0;
+    padding-inline-start: 8px;
 }
 
 .main-app .aside a:not(.router-link-exact-active):hover{

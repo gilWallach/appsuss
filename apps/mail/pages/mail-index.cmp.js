@@ -2,13 +2,13 @@
 // filter cmp watch url changes (queryParams) emit to mail-index update mailsToShow for list
 import { mailService } from '../services/mail.service.js'
 
-import mailHeader from '../cmps/mail-header.cmp.js'
+// import mailHeader from '../cmps/mail-header.cmp.js'
 import mailList from '../cmps/mail-list.cmp.js'
 import mailAside from '../cmps/mail-aside.cmp.js'
 
 export default {
     template: `
-        <mail-header/>
+        <!-- <mail-header/> -->
     <main class="mail-index">
         <mail-aside
         @filter="filter"
@@ -56,7 +56,7 @@ export default {
     },
     components: {
         mailList,
-        mailHeader,
+        // mailHeader,
         mailAside
     }
 

@@ -10,17 +10,19 @@ export default {
     </div>`,
     created(){
         this.mail.isRead = true
+        console.log('created', this.mail.isRead)
     },
     methods: {
         deleteMail() {
+
             mailService.deleteMail(this.mail.id)
             .then(() => {
                 this.$router.push('/mail')
             })
         },
         toggleIsRead() {
+            console.log('toggle', this.mail.isRead)
             this.mail.isRead = !this.mail.isRead
-            // this.$emit('toggleIsRead')
         },
         backToList(){
             this.$router.push('/mail')

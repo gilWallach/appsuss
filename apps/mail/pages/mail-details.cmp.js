@@ -4,15 +4,19 @@
 
 import { mailService } from '../services/mail.service.js'
 
-import mailActions from '../cmps/mail-actions.cmp.js'
+// import mailActions from '../cmps/mail-actions.cmp.js'
 
 export default {
     template: `
     <section v-if="mail" class="details">
         <div className="header-container">
-            <mail-actions :mail="mail" />
-            <h2>{{ mail.subject }}</h2>
-        </div>
+    <div className="detail-actions">
+        <button @click="backToList" class="back-btn" title="back to inbox"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button @click="deleteMail" class="delete-btn" title="delete mail"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        <button @click="toggleIsRead" class="isRead-btn" title="mark as unread"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+    </div>
+     <h2>{{ mail.subject }}</h2>
+    </div>
     <div className="details-info flex">
         <img src="assets/img/icons/user-icon.png" alt="user-icon.png" />
         <div class="details-from-to-container flex">
@@ -42,6 +46,24 @@ export default {
                     this.mail.isRead = true
                 })
         },
+        deleteMail() {
+            
+            mailService.deleteMail(this.mail.id)
+            .then(() => {
+                this.$router.push('/mail')
+            })
+        },
+        toggleIsRead() {
+            console.log('toggle', this.mail.isRead)
+            this.mail.isRead = !this.mail.isRead
+            // this.$emit('toggleIsRead')
+        },
+        backToList(){
+            mailService.save(this.mail)
+                .then(() => {
+                    this.$router.push('/mail')                    
+                })
+        }
     },
     computed: {
         mailId() {
@@ -61,6 +83,6 @@ export default {
         }
     },
     components: {
-        mailActions,
+        // mailActions,
     }
 }

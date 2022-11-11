@@ -16,13 +16,14 @@
     padding-inline-end: 40px;
 }
 
-.header-sec .left img{
+.header-sec .left .mail-logo{
     width: 30px;
     height: 24px;
     margin-inline: 10px;
 }
 
-.header-sec .left img.keep-logo{
+.header-sec .left img:not(.mail-logo){
+    margin-inline: 10px;
     width: auto;
     height: 46px;
 }
@@ -30,6 +31,11 @@
 .header-sec .left h2{
     margin-bottom: 0;
 }
+.header-sec .left h2.apssus{
+    align-self: flex-end;
+}
+
+
 
 .header-sec .middle {
     max-width: 100%;
@@ -55,19 +61,38 @@
 }
 
 .header-sec .main-nav{
+    pointer-events: none;
     position:absolute;
     bottom:0;
     background-color: var(--clr1);
     border-radius: 1em;
-    transform: translateY(100%);
+    transform: translate(-60px, 100%);
     opacity: 0;
     transition: 0.6s;
     padding: 4px;
     display: flex;
     align-items: center;
-    height: 100px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 160px;
+}
+
+.header-sec .main-nav a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 5px;
+}
+.header-sec .main-nav a > *:not(.mail-logo){
+    width: 48px;
+    height: 48px;
+}
+
+.header-sec .main-nav a .mail-logo{
+    width: 38px;
 }
 
 .header-sec .main-nav.shown{
+    pointer-events: auto;
     opacity: 1;
 }

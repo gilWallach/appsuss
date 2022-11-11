@@ -33,7 +33,7 @@ const routerOptions = {
 			name:'mail',
 			children: [
 				{
-					path: '/mail/mail-edit:?id',
+					path: 'edit:id?',
 					component: mailEdit
 				},
 			]

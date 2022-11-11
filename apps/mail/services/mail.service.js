@@ -52,13 +52,25 @@ const loggedinUser = {
 
 // filterBy
 
-function getEmptyCriteria(){
+function getEmptyCriteria() {
     return {
-        status:'',
-        txt:'',
-        isRead:false,
-        isStared:false,
-        labels:[]
+        status: '',
+        txt: '',
+        isRead: false,
+        isStared: false,
+        labels: []
+    }
+}
+
+function getEmptyMail() {
+    return {
+        id: '',
+        subject: '',
+        body: '',
+        isRead: false,
+        sentAt: null,
+        from: '',
+        to: ''
     }
 }
 const criteria = {
@@ -85,14 +97,14 @@ function getCriteria() {
 
 function get(mailId) {
     return storageService.get(MAILS_KEY, mailId)
-  }
+}
 
-  function deleteMail(mailId) {
-      return storageService.remove(MAILS_KEY, mailId)
-  }
+function deleteMail(mailId) {
+    return storageService.remove(MAILS_KEY, mailId)
+}
 
-  function save(mail) {
-    if(mail.id){
+function save(mail) {
+    if (mail.id) {
         return storageService.put(MAILS_KEY, mail)
     } else {
         return storageService.post(MAILS_KEY, mail)

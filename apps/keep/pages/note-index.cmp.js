@@ -6,7 +6,7 @@ import noteFilter from "../cmps/note-filter.cmp.js"
 import noteList from "../cmps/note-list.cmp.js"
 import noteEdit from "../cmps/note-edit.cmp.js"
 
-import mailHeader from "../../mail/cmps/mail-header.cmp.js"
+// import mailHeader from "../../mail/cmps/mail-header.cmp.js"
 import noteAside from "../cmps/note-aside.cmp.js"
 
 
@@ -14,7 +14,7 @@ export default {
     name: 'note-index',
     template: `
 
-    <mail-header :type="'keep'"/>
+    <!-- <mail-header :type="'keep'"/> -->
     <note-filter
     @filter="setFilter"
     />
@@ -96,7 +96,7 @@ export default {
         noteFilter,
         noteList,
         noteEdit,
-        mailHeader,
+        // mailHeader,
         noteAside
     }
 }

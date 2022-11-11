@@ -9,6 +9,7 @@ import mailHeader from './apps/mail/cmps/mail-header.cmp.js'
 const options = {
 	template: `
         <section class="main-container">
+            <mail-header />
             <router-view />
             <app-footer />
             <user-msg />

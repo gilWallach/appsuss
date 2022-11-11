@@ -1,33 +1,39 @@
-
-.mail-list-table{
+.mail-list-table {
     width: 100%;
     border-radius: 15px;
     background: #fff;
 }
 
-.mail-list{
+.mail-list {
     width: 100%;
 }
 
-.mail-list-container{
-  overflow: scroll;
-  flex-grow: 1;
+.mail-list-container {
+    overflow: scroll;
+    flex-grow: 1;
 }
 
 .list-item {
-    justify-content: flex-start;
     cursor: pointer;
     line-height: 1.8em;
     width: 100%;
+    background-color: var(--secondary-clr2);
 }
 
 .list-item a {
-    display: flex;
+    height: 48px;
+    display: grid;
+    grid-template-columns: .1fr 1fr 1fr .7fr;
+    align-items: center;
+    width: 100%;
+}
+.list-item a tr{
+
     align-items: center;
     width: 100%;
 }
 
-.list-item  button {
+.list-item button {
     border: none;
     border-radius: 50%;
     font-size: 16px;
@@ -41,11 +47,12 @@
     display: inline;
     opacity: 100%;
 }
+
 .list-item:hover button:hover {
-background-color: var(--clr2);
+    background-color: var(--clr2);
 }
 
 .read {
     font-family: nunito-bold;
-    background-color: var(--secondary-clr2);
+    background-color: #fff;
 }

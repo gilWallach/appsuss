@@ -3,12 +3,13 @@ export default {
     template: `
     <section class="header-sec flex align-center">
         <div class="left flex align-center">
-            <i class="fa fa-bars burger" aria-hidden="true"></i>
+            <i v-if="isApp" class="fa fa-bars burger" aria-hidden="true"></i>
                 <img :src="setLogo" :class="setClass" alt="Gmail-Logo" />
-                <h2><router-link :to="setNavigation">{{setHeader}}</router-link></h2>
+                <h2 :class="{apssus: !isApp}">{{setHeader}}</h2>
+                <!-- <router-link :to="setNavigation">{{setHeader}}</router-link> -->
         </div>
         <div class="middle flex">
-            <input 
+            <input v-if="isApp"
                     @input="searchByTxt"
                     type="search" 
                     :placeholder="setPlaceholder"
@@ -18,9 +19,10 @@ export default {
             <img @click="isShown= !isShown" class="menu btn" src="assets/img/icons/icons-circled-menu.png" alt="icons-circled-menu" />        
             <img src="assets/img/icons/user-icon.png" alt="user-icon.png" />
             <nav class="main-nav" :class="{shown:isShown}">
-                <router-link v-if="this.type" to="/mail" title="Go to mails"><img src="assets/img/icons/Gmail-Logo.png" alt="" /></router-link>
-                <router-link v-else to="/keep" title="Go to keep"><img src="assets/img/icons/keep.png" alt="" /></router-link>
-                <router-link to="/about">About</router-link>
+                <router-link to="/mail" title="Go to mails"><img class="mail-logo" src="assets/img/icons/Gmail-Logo.png" alt="" /></router-link>
+                <router-link to="/keep" title="Go to keep"><img class="keep-logo" src="assets/img/icons/keep.png" alt="" /></router-link>
+                <router-link to="/about" title="Go to about"><img src="assets/img/icons/info-icon-blue.png" alt="" /></router-link>
+                <router-link to="/" title="Go to home"><img src="assets/img/icons/home-icon.png" alt="" /></router-link>
             </nav>
             <!-- Todos: set our icons   -->
 
@@ -30,31 +32,43 @@ export default {
     data() {
         return {
             input: '',
-            isShown:false
+            isShown: false,
+            type: this.$route
         }
     },
     methods: {
         searchByTxt() {
             this.$router.push({ query: { txt: this.input } })
-        }
+        },
     },
     computed: {
+        pageName() {
+            return this.$route.name
+        },
         setHeader() {
-            return (this.type) ? 'Keep' : 'Gmail'
+            if (this.pageName === 'keep') return 'Keep'
+            else if (this.pageName === 'mail') return 'Gmail'
+            else return 'Appsus'
         },
         setLogo() {
-            return (this.type) ? 'assets/img/icons/keep.png'
-                : 'assets/img/icons/Gmail-Logo.png'
+            if (this.pageName === 'keep') return 'assets/img/icons/keep.png'
+            else if (this.pageName === 'mail') return 'assets/img/icons/Gmail-Logo.png'
+            else return 'assets/img/icons/Appsus-logo.png'
         },
         setClass() {
-            if (this.type) return 'keep-logo'
+            if (this.pageName === 'mail') return 'mail-logo'
         },
         setPlaceholder() {
-            return (this.type) ? 'Search note' : 'Search mail'
+            return (this.pageName === 'keep') ? 'Search note' : 'Search mail'
         },
-        setNavigation() {
-            return (this.type) ? '/keep' : '/mail'
+        isApp(){
+            return this.pageName === 'keep' || this.pageName === 'mail'
         }
+        // setNavigation() {
+        //     if (this.pageName === 'keep') return '/mail'
+        //     else if (this.pageName === 'mail') return '/keep'
+        //     else return 
+        // }
     }
 
 }

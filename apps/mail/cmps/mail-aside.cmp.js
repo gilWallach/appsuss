@@ -10,27 +10,36 @@ export default {
             <button class="add-mail flex align-center">
                 <i class="fa fa-pencil" aria-hidden="true"></i>Compose
             </button>
+
         </router-link>
 
         </div>
-        <div className="mail-filter-container">
 
-            <ul>
-                <a href="#"><li>Inbox</li></a>
-                <a href="#"><li>Starred</li></a>
-                <a href="#" v-if="mails"><li>Read <span>{{ readMailsCount }}</span></li></a>
-                <a href="#"><li>Sent</li></a>
-                <a href="#"><li>Drafts</li></a>
-                <a href="#"><li>Trash</li></a>
+        <div className="mail-filter-container">
+            <ul  v-if="mails">
+                <li><span>Inbox</span><span>{{ statusMailsCount('inbox') }}</span></li>
+                <li><span>Read</span><span>{{ readMailsCount }}</span></li>
+                <li><span>Sent</span><span>{{ statusMailsCount('sent') }}</span></li>
+                <li><span>Drafts</span><span>{{ statusMailsCount('draft') }}</span></li>
+                <li><span>Trash</span><span>{{ statusMailsCount('trash') }}</span></li>
             </ul>
         <h4>Labels</h4>
     <ul v-if="criteria">
-        <a v-for="label in criteria.labels" href="#"><li>{{label}}</li></a>
+        <li v-for="label in criteria.labels">{{label}}</li>
     </ul>
         </div>
     </section>
     <router-view/>
     `,
+    methods: {
+        statusMailsCount(category) {
+            let counter = 0
+            this.mails.map(mail => {
+                if (mail.status === category) counter++
+            })
+            return counter === 0 ? '' : counter
+        },
+    },
     computed: {
         readMailsCount() {
             let counter = 0
@@ -39,6 +48,7 @@ export default {
             })
             return counter === 0 ? '' : counter
         }
+
     },
     components: {
         mailEdit,

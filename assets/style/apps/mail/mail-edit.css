@@ -1,0 +1,88 @@
+.mail-edit {
+    position: absolute;
+    right: 16px;
+    bottom: 56px;
+    display: flex;
+    width: 568px;
+    height: 640px;
+    /* padding-inline: 16px; */
+    box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.mail-edit input,
+.mail-edit textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--clr2);
+}
+.mail-edit input:focus-visible,
+.mail-edit textarea:focus-visible {
+    border: none;
+}
+
+.mail-edit textarea {
+    padding-inline: 16px;
+    height: 410px;
+}
+
+.mail-edit button.submit-btn {
+    width: 105px;
+    height: 38px;
+    /* margin: 20px; */
+    background-color: #0b57d0;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+}
+
+.mail-edit button.submit-btn:hover {
+    box-shadow: 0 1px 2px 0 rgb(26 115 232 / 45%), 0 1px 3px 1px rgb(26 115 232 / 30%);
+    outline: 1px solid transparent
+}
+
+.mail-edit .create-form div {
+    width: 100%;
+    font-family: nunito-bold;
+    background-color: var(--secondary-clr2);
+    padding: 16px 10px;
+    justify-content: space-between;
+}
+
+.mail-edit .create-form {
+    flex-direction: column;
+    height: 100%;
+}
+.mail-edit .create-form:focus {
+    border: none;
+}
+
+.mail-edit button.close-btn, 
+.mail-edit button.delete-btn{
+    background-color: transparent;
+    color: var(--clr3);
+    border: none;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+}
+.mail-edit button.close-btn:hover,
+.mail-edit button.delete-btn:hover{
+    background-color: var(--clr2);
+}
+
+.mail-edit button.delete-btn{
+    color: var(--clr5);
+}
+.mail-edit i{
+    font-size: 16px;
+}
+
+.mail-edit .create-form .header{
+    align-items: center;
+}
+.mail-edit .create-form .header p{
+margin-block: 0;
+}

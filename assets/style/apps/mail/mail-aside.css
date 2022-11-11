@@ -1,7 +1,6 @@
 .aside-continer{
     width: 268px;
-    height: 100vh;
-}
+    height: calc(100vh - 66px);}
 
 .mail-add-container{
     position: relative;
@@ -23,9 +22,15 @@
 }
 .mail-filter-container ul li{
     padding: 6px 0;
-    
+    cursor: pointer;
 }
 .mail-filter-container h4{
     margin-inline: 26px 12px;
 
+}
+
+.mail-filter-container li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

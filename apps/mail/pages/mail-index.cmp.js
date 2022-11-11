@@ -19,7 +19,6 @@ export default {
         :criteria="criterias"
         :mails="mails"
         />
-
         <mail-list
         v-if="mails" 
         :mails="mailsToShow"
@@ -32,7 +31,8 @@ export default {
         mailService.query()
             .then(mails => {
                 this.mails = mails
-                const dupLabels = mails.reduce((acc,mail)=>acc.concat(mail.labels),[])
+                //get Labels
+                const dupLabels = mails.reduce((acc, mail) => acc.concat(mail.labels), [])
                 const uniqueLabels = [...new Set([...dupLabels])]
                 this.criterias.labels = uniqueLabels
             })
@@ -41,18 +41,18 @@ export default {
         return {
             mails: null,
             user: mailService.getUser(),
-            criterias: {labels:[]},
+            criterias: { labels: [] },
         }
     },
     methods: {
         filter(filterBy) {
             this.criterias = filterBy
         },
-        updatedMailList(){
+        updatedMailList() {
             mailService.query()
-            .then(mails => {
-                this.mails = mails
-            })
+                .then(mails => {
+                    this.mails = mails
+                })
         }
     },
     computed: {

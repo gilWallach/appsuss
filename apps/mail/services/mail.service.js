@@ -23,6 +23,7 @@ const gMails = [
         sentAt: 1551133930594,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
+        status: 'inbox',
         labels:['work','party']
     },
     {
@@ -33,6 +34,29 @@ const gMails = [
         sentAt: 155112390594,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
+        status: 'inbox',
+        labels:['romantic','work']
+    },
+    {
+        id: 'e103',
+        subject: 'Yo!',
+        body: 'When do we meet?',
+        isRead: true,
+        sentAt: 155112390594,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        status: 'trash',
+        labels:['romantic','work']
+    },
+    {
+        id: 'e104',
+        subject: 'Hey there! I need your help with something. Puki is waiting for you',
+        body: 'When do we meet?',
+        isRead: true,
+        sentAt: 155112390594,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        status: 'draft',
         labels:['romantic','work']
     },
 ]
@@ -106,7 +130,7 @@ function deleteMail(mailId) {
     return storageService.remove(MAILS_KEY, mailId)
 }
 
-function save(mail) {
+function save( mail) {
     if (mail.id) {
         return storageService.put(MAILS_KEY, mail)
     } else {

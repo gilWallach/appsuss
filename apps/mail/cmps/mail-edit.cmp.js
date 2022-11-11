@@ -4,19 +4,27 @@ import { mailService } from "../services/mail.service.js"
 export default {
     template: `
     <section class="mail-edit">
-        <h1>hello mail edit</h1>
-        <form @submit.prevent="save">
-            <div>New Message</div>
-            <input ref="to" type="text" v-model="mailToEdit.to" placeholder="To"/>
-            <input type="text" placeholder="Subject"/>
-            <textarea name="body" id="" cols="30" rows="10"></textarea>
-            <button type="submit">Send</button>
-        </form>
+        <form @submit.prevent="save" class="create-form flex">
+            <div class="header flex"><p>New Message</p><button @click="close" class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></button></div>
+            <input ref="to" v-model="mailToEdit.to" type="text" placeholder="Recipients"/>
+            <input type="text" v-model="mailToEdit.subject" placeholder="Subject"/>
+            <textarea name="body" v-model="mailToEdit.body" cols="70" rows="25"></textarea>
+            <div class="flex align-center">
+                <button class="submit-btn" type="submit">Send</button>
+                <button class="delete-btn" @click.prevent="deleteMail"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </form>
+            </div>
     </section>
     `,
+
+// v-model="mailToEdit.to"
+// v-mode="mailToEdit.subject"
+// v-mode="mailToEdit.body"
+
     data() {
         return {
-            mailToEdit: mailService.getEmptyMail()
+            mailToEdit: mailService.getEmptyMail(),
+            isOpen: false
         }
     },
     created() {
@@ -30,8 +38,34 @@ export default {
         this.$refs.to.focus()
     },
     methods: {
+        setMailInfo(){
+            this.mailToEdit.isRead = true
+            this.mailToEdit.sentAt = Date.now()
+            this.mailToEdit.from = mailService.getUser().mail
+        },
         save(){
-
+            this.setMailInfo()
+            this.mailToEdit.status = 'sent'
+            mailService.save(this.mailToEdit)
+            .then(() => {
+                this.$router.push('/mail')
+            })
+        },
+        close(){
+            this.setMailInfo()
+            this.mailToEdit.status = 'draft'
+            mailService.save(this.mailToEdit)
+            .then(() => {
+                this.$router.push('/mail')
+            })
+        },
+        deleteMail(){
+            this.setMailInfo()
+            this.mailToEdit.status = 'trash'
+            mailService.save(this.mailToEdit)
+            .then(() => {
+                this.$router.push('/mail')
+            })
         }
     }
 }

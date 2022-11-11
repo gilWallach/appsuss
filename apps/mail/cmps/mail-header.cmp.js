@@ -6,7 +6,7 @@ export default {
         <div class="left flex align-center">
             <i v-if="isApp"
                @click="toggleAside" 
-                class="fa fa-bars burger" aria-hidden="true"></i>
+                class="fa fa-bars burger btn" aria-hidden="true"></i>
                 <img :src="setLogo" :class="setClass" alt="Gmail-Logo" />
                 <h2 :class="{apssus: !isApp}">{{setHeader}}</h2>
                 <!-- <router-link :to="setNavigation">{{setHeader}}</router-link> -->

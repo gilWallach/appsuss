@@ -1,0 +1,29 @@
+.color-options{
+    position: absolute;
+    /* width: 100%; */
+    background-color: var(--secondary-clr2);
+    border-radius: 1em;
+    bottom: 0;
+    left: -17%;
+    transform: translateY(60%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s;
+}
+
+.color-options.open{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.color-options > * {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-inline: 2px;
+    cursor: pointer;
+}
+
+.color-options > *:hover{
+    border: 3px solid var(--clr4);
+}

@@ -25,7 +25,7 @@ export default {
             </ul>
         <h4>Labels</h4>
     <ul v-if="criteria">
-        <li v-for="label in criteria.labels">{{label}}</li>
+        <li v-for="label in criteria.labels">{{label}}</li></a>
     </ul>
         </div>
     </section>

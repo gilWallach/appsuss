@@ -16,17 +16,6 @@ const USER_KEY = 'userDB'
 
 const gMails = [
     {
-        id: 'e101',
-        subject: 'Miss you!',
-        body: 'Would love to catch up sometimes',
-        isRead: false,
-        sentAt: 1551133930594,
-        from: 'momo@momo.com',
-        to: 'user@appsus.com',
-        status: 'inbox',
-        labels:['work','party']
-    },
-    {
         id: 'e102',
         subject: 'Hey!',
         body: 'When do we meet?',
@@ -36,6 +25,17 @@ const gMails = [
         to: 'user@appsus.com',
         status: 'inbox',
         labels:['romantic','work']
+    },
+    {
+        id: 'e101',
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false,
+        sentAt: 1551133930594,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        status: 'inbox',
+        labels:['work','party']
     },
     {
         id: 'e103',

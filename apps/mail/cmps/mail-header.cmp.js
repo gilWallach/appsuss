@@ -19,10 +19,10 @@ export default {
             <img @click="isShown= !isShown" class="menu btn" src="assets/img/icons/icons-circled-menu.png" alt="icons-circled-menu" />        
             <img src="assets/img/icons/user-icon.png" alt="user-icon.png" />
             <nav class="main-nav" :class="{shown:isShown}">
-                <router-link to="/mail" title="Go to mails"><img class="mail-logo" src="assets/img/icons/Gmail-Logo.png" alt="" /></router-link>
-                <router-link to="/keep" title="Go to keep"><img class="keep-logo" src="assets/img/icons/keep.png" alt="" /></router-link>
-                <router-link to="/about" title="Go to about"><img src="assets/img/icons/info-icon-blue.png" alt="" /></router-link>
-                <router-link to="/" title="Go to home"><img src="assets/img/icons/home-icon.png" alt="" /></router-link>
+                <router-link @click="isShown= !isShown" to="/mail" title="Go to mails"><img class="mail-logo" src="assets/img/icons/Gmail-Logo.png" alt="" /></router-link>
+                <router-link @click="isShown= !isShown" to="/keep" title="Go to keep"><img class="keep-logo" src="assets/img/icons/keep.png" alt="" /></router-link>
+                <router-link @click="isShown= !isShown" to="/about" title="Go to about"><img src="assets/img/icons/info-icon-blue.png" alt="" /></router-link>
+                <router-link @click="isShown= !isShown" to="/" title="Go to home"><img src="assets/img/icons/home-icon.png" alt="" /></router-link>
             </nav>
             <!-- Todos: set our icons   -->
 

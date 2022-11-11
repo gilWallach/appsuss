@@ -6,4 +6,11 @@ main .content-container{
     gap: 40px;
     flex-grow: 1;
     flex-basis: 70%;
+    overflow-y: scroll;
+    padding-top: 10vh;
+    padding-bottom: 40px;
+}
+
+.main-app{
+    height: 90vh;
 }

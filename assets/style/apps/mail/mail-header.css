@@ -3,6 +3,7 @@
     width: 100%;
     justify-content: space-between;
     background-color: var(--secondary-clr1);
+    height: 10vh;
 }
 .header-sec .burger{
     font-size: 24px;
@@ -49,6 +50,7 @@
     border-radius: 10px;
     border:none;
     background-color: var(--secondary-clr2);
+    outline: none;
 }
 .header-sec .right img{
     width: 32px;

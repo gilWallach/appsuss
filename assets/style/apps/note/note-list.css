@@ -44,7 +44,7 @@
 
 }
 
-.notes-list .action-btns {
+ .note-action-btns {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(22px, 1fr));
     opacity: 0;
@@ -52,24 +52,25 @@
     align-items: center;
 }
 
-.notes-list>li:hover .action-btns {
+.notes-list>li:hover .note-action-btns{
     opacity: 1;
 }
 
-.notes-list .action-btns input {
+ .note-action-btns input {
     opacity: 0;
     width: 0;
     height: 0;
     position: absolute;
 }
 
-.notes-list .action-btns button.pin{
+ .note-action-btns button.pin{
     position: absolute;
     top: 0;
     right: 0;
 }
 
-.notes-list .action-btns button{
+ .note-action-btns button{
     background-color: transparent;
     border: 0;
 }
+

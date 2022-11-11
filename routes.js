@@ -9,7 +9,7 @@ import mailEdit from './apps/mail/cmps/mail-edit.cmp.js'
 import mailDetails from './apps/mail/pages/mail-details.cmp.js'
 
 //keep
-import keepDetails from './apps/keep/pages/note-details.cmp.js'
+import noteDetails from './apps/keep/pages/note-details.cmp.js'
 import mailList from './apps/mail/cmps/mail-list.cmp.js'
 
 
@@ -50,8 +50,8 @@ const routerOptions = {
 			name:'keep',
 			children: [
 				{
-					path: '/keep/keep-details:?id', // dynamic child component + object with cmps in service (smart cmp)
-					component: keepDetails
+					path: '/keep/:id', // dynamic child component + object with cmps in service (smart cmp)
+					component: noteDetails
 				},
 			]
 		},

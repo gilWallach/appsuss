@@ -5,8 +5,8 @@ import { noteService } from "../services/note.service.js"
 import noteFilter from "../cmps/note-filter.cmp.js"
 import noteList from "../cmps/note-list.cmp.js"
 import noteEdit from "../cmps/note-edit.cmp.js"
+import noteDetails from "./note-details.cmp.js"
 
-// import mailHeader from "../../mail/cmps/mail-header.cmp.js"
 import noteAside from "../cmps/note-aside.cmp.js"
 
 
@@ -15,7 +15,6 @@ export default {
     props:['aside'],
     template: `
 
-    <!-- <mail-header :type="'keep'"/> -->
     <note-filter
     @filter="setFilter"
     />
@@ -41,6 +40,7 @@ export default {
             :subtitle="'OTHERS'"/>
         </div>
     </main>
+    <router-view @remove="removeNote" @save="saveNote"></router-view>
 
     `,
     data() {
@@ -53,7 +53,6 @@ export default {
     },
     created() {
         this.loadNotes()
-        console.log(this.aside);
     },
     methods: {
         loadNotes() {
@@ -76,6 +75,10 @@ export default {
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
+        },
+        updateNote(updatedNote){
+           const idx = this.notes.findIndex(note=>note.id===updatedNote.id)
+           this.notes.splice(idx,1,updatedNote)
         }
     },
     computed: {
@@ -98,7 +101,7 @@ export default {
         noteFilter,
         noteList,
         noteEdit,
-        // mailHeader,
-        noteAside
+        noteAside,
+        noteDetails
     }
 }

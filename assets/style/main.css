@@ -13,6 +13,7 @@
 @import 'cmps/app-header.css';
 @import 'cmps/app-footer.css';
 @import 'cmps/user-msg.css';
+@import 'cmps/color-picker.css';
 
 /* Apps */
 /* mail */
@@ -29,3 +30,4 @@
 @import 'apps/note/note-list.css';
 @import 'apps/note/note-edit.css';
 @import 'apps/note/note-aside.css';
+@import 'apps/note/note-details.css'

@@ -1,0 +1,67 @@
+.note-details{
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 75vh;
+    max-height: 95vh;
+    width: 70%;
+    padding-block: 3em;
+    background-color: aquamarine;
+    border-radius: 1em;
+}
+
+.note-details .note-action-btns{
+  opacity: 1;
+}
+
+.note-details > * {
+    flex-grow: 1;
+}
+
+.main-screen {
+    position: fixed;
+    inset: 0;
+    background-color: rgb(0 0 0 / 50%);
+    /* display: none; */
+    opacity: 1;
+    cursor: pointer;
+    transition: opacity .6s;
+    pointer-events: auto;
+}
+
+body.menu-open .main-screen {
+    /* display: block; */
+    cursor: pointer;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.bounce-enter-active {
+    animation: bounce-in 0.5s;
+  }
+  .bounce-leave-active {
+    animation: bounce-in 0.5s reverse;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

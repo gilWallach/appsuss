@@ -7,19 +7,31 @@ import userMsg from './cmps/user-msg.cmp.js'
 import mailHeader from './apps/mail/cmps/mail-header.cmp.js'
 
 const options = {
-	template: `
+    template: `
         <section class="main-container">
-            <mail-header />
-            <router-view />
+            <mail-header @aside-toggle="toggleAside"/>
+            <section className="apps" :class="{open:isMenuOpen}">
+                <router-view />
+            </section>
             <app-footer />
             <user-msg />
         </section>
     `,
-	components: {
-		appFooter,
-		userMsg,
+    data() {
+        return {
+            isMenuOpen: true
+        }
+    },
+    methods: {
+        toggleAside() {
+            this.isMenuOpen = !this.isMenuOpen
+        }
+    },
+    components: {
+        appFooter,
+        userMsg,
         mailHeader
-	},
+    },
 }
 
 const app = createApp(options)

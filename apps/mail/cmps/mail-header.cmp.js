@@ -1,9 +1,12 @@
 export default {
+    emits:['aside-toggle'],
     props: ['type'],
     template: `
     <section class="header-sec flex align-center">
         <div class="left flex align-center">
-            <i v-if="isApp" class="fa fa-bars burger" aria-hidden="true"></i>
+            <i v-if="isApp"
+               @click="toggleAside" 
+                class="fa fa-bars burger" aria-hidden="true"></i>
                 <img :src="setLogo" :class="setClass" alt="Gmail-Logo" />
                 <h2 :class="{apssus: !isApp}">{{setHeader}}</h2>
                 <!-- <router-link :to="setNavigation">{{setHeader}}</router-link> -->
@@ -33,13 +36,15 @@ export default {
         return {
             input: '',
             isShown: false,
-            type: this.$route
         }
     },
     methods: {
         searchByTxt() {
             this.$router.push({ query: { txt: this.input } })
         },
+        toggleAside() {
+            this.$emit('aside-toggle')
+        }
     },
     computed: {
         pageName() {
@@ -61,7 +66,7 @@ export default {
         setPlaceholder() {
             return (this.pageName === 'keep') ? 'Search note' : 'Search mail'
         },
-        isApp(){
+        isApp() {
             return this.pageName === 'keep' || this.pageName === 'mail'
         }
         // setNavigation() {

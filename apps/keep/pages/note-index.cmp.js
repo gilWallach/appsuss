@@ -90,7 +90,7 @@ export default {
             if(this.filterBy.status === 'reminders') notes = notes.filter(note => note.isReminded && !note.deletedAt && !note.isArchived)
             else if(this.filterBy.status === 'archive') notes = notes.filter(note => note.isArchived && !note.deletedAt && !note.isReminded)
             else if(this.filterBy.status === 'trash') notes = notes.filter(note => note.deletedAt)
-            else notes = notes.filter(note => !note.deletedAt && !note.isArchived && !note.isReminded)
+            else notes = notes.filter(note => !note.deletedAt)
             return notes
         },
         pinnedNotesToShow() {

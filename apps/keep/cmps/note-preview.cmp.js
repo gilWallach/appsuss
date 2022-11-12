@@ -17,10 +17,10 @@ export default {
         :info= note.info
         @toggle="saveNote">
     </component>
-    <button class="pin" @click.stop="togglePin()" :title="setTitle"><i :class="isPinned" class="btn" aria-hidden="true"></i></button>
+    <button class="pin" @click.stop="togglePin()" :title="setPinTitle"><i :class="isPinned" aria-hidden="true"></i></button>
     <div className="note-action-btns">
-        <button @click.stop="archive()" title="archive note"><i class="fa fa-archive btn" aria-hidden="true"></i></button>
-        <button @click.stop="remind()" title="remind note"><i class="fa fa-bell btn" aria-hidden="true"></i></button>
+        <button @click.stop="archive()" :title="note.isArchived? 'Unarchive note' :'Archive note'"><i class="fa fa-archive btn" aria-hidden="true"></i></button>
+        <button @click.stop="remind()" :title="note.isReminded ? 'Unremind note' : 'Remind note'"><i :class="isReminded" class="btn" aria-hidden="true"></i></button>
         <label @click.stop="colorMenu=!colorMenu" class="btn"><img src="assets/img/icons/palette.png" alt="" /></label>
         <button @click.stop="remove()" title="remove note"><i class="fa fa-trash-o btn" aria-hidden="true"></i></button>  
         <color-picker :noteId="note.id" @color-changed="changeColor" :isOpen="colorMenu"/>
@@ -69,9 +69,12 @@ export default {
         isPinned() {
             return (this.note.isPinned) ? 'fa fa-chain-broken' : `fa fa-link`
         },
-        setTitle() {
+        setPinTitle() {
             return (this.note.isPinned) ? 'Unpin note' : 'Pin note'
-        }
+        },
+        isReminded(){
+            return (this.note.isReminded) ? 'fa fa-bell-o' : 'fa fa-bell' 
+        },
     },
     components: {
         noteTxt,

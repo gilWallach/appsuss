@@ -5,7 +5,7 @@ export default {
     template:`
     <div className="todos-list" v-for="todo in info.todos">
         <input @click.stop type="checkbox" id="checkbox" :checked="todo.doneAt" @change="toggle(todo)" />
-        <label>{{ todo.txt }}</label>
+        <label :class="{checked:todo.doneAt}">{{ todo.txt }}</label>
     </div>
     `,
     data(){

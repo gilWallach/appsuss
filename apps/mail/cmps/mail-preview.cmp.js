@@ -2,7 +2,7 @@
 import { mailService } from '../services/mail.service.js'
 
 export default {
-    emits: ['deleted'],
+    emits: ['update'],
     props: ['mail'],
     template: `
         <!-- <td><input type="checkbox" name="isSelected"></td> -->
@@ -32,7 +32,7 @@ export default {
             this.mail.status = 'trash'
             mailService.save(this.mail)
             .then(() => {
-                this.$emit('deleted')
+                this.$emit('update')
             })
         },
         toggleIsRead() {

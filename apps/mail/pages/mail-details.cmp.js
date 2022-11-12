@@ -46,17 +46,14 @@ export default {
                     this.mail.isRead = true
                 })
         },
-        deleteMail() {
-            
+        deleteMail() {            
             mailService.deleteMail(this.mail.id)
             .then(() => {
                 this.$router.push('/mail')
             })
         },
         toggleIsRead() {
-            console.log('toggle', this.mail.isRead)
             this.mail.isRead = !this.mail.isRead
-            // this.$emit('toggleIsRead')
         },
         backToList(){
             mailService.save(this.mail)
@@ -82,7 +79,4 @@ export default {
             return from.substring(0, from.indexOf('@'))
         }
     },
-    components: {
-        // mailActions,
-    }
 }

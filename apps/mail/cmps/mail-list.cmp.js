@@ -4,7 +4,7 @@ import mailPreview from '../cmps/mail-preview.cmp.js'
 
 // wrap tr with <a>, router link with stop proppagation
 export default {
-    emits: ['deleted'],
+    emits: ['update'],
     props: ['mails'],
     template: `
         <section class="mail-list-container flex">
@@ -14,15 +14,15 @@ export default {
                         <tr class="list-item" v-for="mail in mails" 
                             :class="{ read: !mail.isRead }" 
                             key="mail.id">
-                                <mail-preview :mail="mail" @deleted="deleted"/>
+                                <mail-preview :mail="mail" @update="update"/>
                         </tr>        
                 </table>
             </div>
         </section>    
     `,
     methods: {
-        deleted(){
-            this.$emit('deleted')
+        update(){
+            this.$emit('update')
         }
     },
     components: {

@@ -2,9 +2,10 @@
 import { mailService } from "../services/mail.service.js"
 
 export default {
+    emits: ['update'],
     template: `
     <section class="mail-edit">
-        <form @submit.prevent="save" class="create-form flex">
+        <form @submit.prevent="send" class="create-form flex">
             <div class="header flex"><p>New Message</p><button @click="close" class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></button></div>
             <input ref="to" v-model="mailToEdit.to" type="text" placeholder="Recipients"/>
             <input type="text" v-model="mailToEdit.subject" placeholder="Subject"/>
@@ -16,10 +17,6 @@ export default {
             </div>
     </section>
     `,
-
-// v-model="mailToEdit.to"
-// v-mode="mailToEdit.subject"
-// v-mode="mailToEdit.body"
 
     data() {
         return {
@@ -43,11 +40,12 @@ export default {
             this.mailToEdit.sentAt = Date.now()
             this.mailToEdit.from = mailService.getUser().mail
         },
-        save(){
+        send(){
             this.setMailInfo()
             this.mailToEdit.status = 'sent'
             mailService.save(this.mailToEdit)
             .then(() => {
+                this.$emit('update',this.mailToEdit)
                 this.$router.push('/mail')
             })
         },
@@ -56,6 +54,7 @@ export default {
             this.mailToEdit.status = 'draft'
             mailService.save(this.mailToEdit)
             .then(() => {
+                this.$emit('update',this.mailToEdit)
                 this.$router.push('/mail')
             })
         },
@@ -64,6 +63,7 @@ export default {
             this.mailToEdit.status = 'trash'
             mailService.save(this.mailToEdit)
             .then(() => {
+                this.$emit('update',this.mailToEdit)
                 this.$router.push('/mail')
             })
         }

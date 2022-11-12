@@ -29,4 +29,5 @@
 @import 'apps/note/note-list.css';
 @import 'apps/note/note-edit.css';
 @import 'apps/note/note-aside.css';
-@import 'apps/note/note-details.css'
+@import 'apps/note/note-details.css';
+@import 'apps/note/note-txt.css';

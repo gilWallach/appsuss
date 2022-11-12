@@ -6,9 +6,15 @@ export default {
     template:`
         <div className="note-details-container">
             <div v-if="note" :style="setStyle" className="note-details flex flex-column align-center justify-center">
-                    <note-preview v-if="note" :note="note" @remove="remove" @save="save" class="flex flex-column align-center justify-between"/>
+                    <note-preview
+                    v-if="note"
+                    :note="note" 
+                    @remove="remove" 
+                    @save="save"
+                    @toggle-pin="togglePin" 
+                    class="flex flex-column align-center justify-between"/>
             </div>
-                <div @click="$router.push('/keep')" className="main-screen"></div>
+                <div @click="goBack" className="main-screen"></div>
         </div>
     `,
     data(){
@@ -21,7 +27,6 @@ export default {
         noteService.get(id)
         .then(note=>{
             this.note=note
-            console.log(this.note);
         })
     },
     methods:{
@@ -30,6 +35,14 @@ export default {
         },
         remove(noteId){
             this.$emit('remove',noteId)
+            this.$router.push('/keep')
+        },
+        togglePin(note){
+            this.note.isPinned = !this.note.isPinned
+            this.save(note)
+        },
+        goBack(){
+            this.save(this.note)
             this.$router.push('/keep')
         }
     },

@@ -1,14 +1,15 @@
 .color-options{
     position: absolute;
-    /* width: 100%; */
-    background-color: var(--secondary-clr2);
+    background-color: var(--clr1);
     border-radius: 1em;
     bottom: 0;
-    left: -17%;
+    left: -5%;
     transform: translateY(60%);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.8s;
+    padding: 5px;
+    z-index: 10;
 }
 
 .color-options.open{
@@ -26,4 +27,14 @@
 
 .color-options > *:hover{
     border: 3px solid var(--clr4);
+}
+
+.full-screen{
+    inset: 0;
+    position: fixed;
+    /* pointer-events: none; */
+}
+
+.color-options.open .full-screen{
+    pointer-events: auto;
 }

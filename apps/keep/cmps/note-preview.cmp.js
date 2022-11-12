@@ -18,10 +18,11 @@ export default {
         @toggle="saveNote">
     </component>
     <div className="note-action-btns">
-        <button class="pin" @click.stop="togglePin(note)" :title="setTitle">{{isPinned}}</button>
+        <button class="pin" @click.stop="togglePin()" :title="setTitle"><i :class="isPinned" aria-hidden="true"></i></button>
+        <button @click.stop="archive()" title="archive note"><i class="fa fa-archive" aria-hidden="true"></i></button>
+        <button @click.stop="remind()" title="remind note"><i class="fa fa-bell" aria-hidden="true"></i></button>
         <label @click.stop="colorMenu=!colorMenu" class="btn" >🎨</label>
-        <!-- <input @click.stop @change="saveNote" v-model="note.style.backgroundColor" type="color" className="btn" id="color" title="Change background color"/>   -->
-        <button @click.stop="remove(note.id)" title="remove note"><i class="fa fa-trash-o" aria-hidden="true"></i></button>  
+        <button @click.stop="remove()" title="remove note"><i class="fa fa-trash-o" aria-hidden="true"></i></button>  
     </div>
     <color-picker :noteId="note.id" @color-changed="changeColor" :isOpen="colorMenu"/>
     </div>
@@ -36,20 +37,37 @@ export default {
         saveNote() {
             this.$emit('save', this.note)
         },
-        togglePin(note) {
-            this.$emit('toggle-pin', note)
+        togglePin() {
+            this.$emit('toggle-pin', this.note)
         },
-        remove(noteId) {
-            this.$emit('remove', noteId)
+        remove() {
+            if(!this.note.deletedAt){
+                this.note.deletedAt = Date.now()
+                this.saveNote()
+                return
+            }
+            this.$emit('remove', this.note.id)
         },
         changeColor(color) {
             this.note.style.backgroundColor = color
+            this.saveNote()
+        },
+        archive(){
+            this.note.isReminded = false
+            this.note.deletedAt = null
+            this.note.isArchived = !this.note.isArchived
+            this.saveNote()
+        },
+        remind(){
+            this.note.isArchived = false
+            this.note.deletedAt = null
+            this.note.isReminded = !this.note.isReminded
             this.saveNote()
         }
     },
     computed: {
         isPinned() {
-            return (this.note.isPinned) ? '🔕' : `🔔`
+            return (this.note.isPinned) ? 'fa fa-chain-broken' : `fa fa-link`
         },
         setTitle() {
             return (this.note.isPinned) ? 'Unpin note' : 'Pin note'

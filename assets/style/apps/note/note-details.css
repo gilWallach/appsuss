@@ -65,3 +65,19 @@ body.menu-open .main-screen {
 .fade-leave-to {
   opacity: 0;
 }
+
+.note-details textarea{
+  width: 50vw;
+  height: 50vh;
+  font-size: 1.5rem;
+  cursor: auto;
+}
+
+.note-details iframe{
+  width: 600px;
+  height: 400px;
+}
+
+.note-details img {
+  width: 500px;
+}

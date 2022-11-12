@@ -56,23 +56,102 @@ function _createNotes() {
     if (!notes || !notes.length) {
         const notes = [
             {
-                id: "n101", type: "note-txt", isPinned: true, info: { txt: "Fullstack Me Baby!" },
-                style: { backgroundColor: "#005" }
+                "id": "JJiVW",
+                "type": "note-txt",
+                "isPinned": false,
+                "isReminded": false,
+                "isArchived":false,
+                "deletedAt":null,
+                "info": {
+                    "txt": "Welcome to my world"
+                },
+                "style": {
+                    "backgroundColor": "#fff"
+                }
             },
-            { id: "n102", type: "note-img", info: { url: "assets/img/icons/keep.png", title: "Bobi and Me" }, style: { backgroundColor: "#00d" } },
             {
-                id: "n103", type: "note-todos", info: { label: "Get my stuff together", todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }] },
-                style: { backgroundColor: "#00a" }
+                "id": "CasNl",
+                "type": "note-img",
+                "isPinned": true,
+                "isReminded": true,
+                "isArchived":false,
+                "deletedAt":null,
+                "info": {
+                    "txt": "",
+                    "url": "https://64.media.tumblr.com/8b33555001dfd1f4c2b4a0d8894a6839/a3c4c5555a725646-ba/s640x960/4e02167f7137973c21ae0a55a94ce51f1fe0fe61.jpg"
+                },
+                "style": {
+                    "backgroundColor": "#74b9ff"
+                }
             },
-            { id: "n104", type: "note-video", info: { url: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4", title: "My favorite music" }, style: { backgroundColor: "#0bd" } },
-        ];
+            {
+                "id": "dfPtq",
+                "type": "note-img",
+                "isPinned": true,
+                "isReminded": false,
+                "isArchived":false,
+                "deletedAt":null,
+                "info": {
+                    "txt": "",
+                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjsb1P-p5ujctrJWwCkMzcQ-jtA-H1Wo9tA&usqp=CAU"
+                },
+                "style": {
+                    "backgroundColor": "#dfe6e9"
+                }
+            },
+            {
+                "id": "JPQMO",
+                "type": "note-video",
+                "isPinned": true,
+                "isReminded": false,
+                "isArchived":false,
+                "deletedAt":null,
+                "info": {
+                    "txt": "",
+                    "url": "https://www.youtube.com/watch?v=mES0BoMFbRs"
+                },
+                "style": {
+                    "backgroundColor": "#81ecec"
+                }
+            },
+            {
+                "id": "NI8DR",
+                "type": "note-txt",
+                "isPinned": true,
+                "isReminded": false,
+                "isArchived":true,
+                "deletedAt":null,
+                "info": {
+                    "txt": "Don't forget to drink water :) okay?"
+                },
+                "style": {
+                    "backgroundColor": "#74b9ff"
+                }
+            },
+            {
+                "id": "NI8DM",
+                "type": "note-txt",
+                "isPinned": true,
+                "isReminded": false,
+                "isArchived":false,
+                "deletedAt":Date.now(),
+                "info": {
+                    "txt": "I forgot to drink water"
+                },
+                "style": {
+                    "backgroundColor": "#74b9ff"
+                }
+            }
+        ]
         utilService.saveToStorage(NOTE_KEY, notes)
     }
     return notes
 }
 
-function _createNote(vendor, maxSpeed = 250) {
+function _createNote(type, maxSpeed = 250) {
     const note = getEmptyNote(vendor, maxSpeed)
     note.id = utilService.makeId()
     return note
 }
+
+

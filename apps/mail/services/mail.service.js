@@ -16,16 +16,6 @@ const USER_KEY = 'userDB'
 
 const gMails = [
     {
-        id: 'e101',
-        subject: 'Miss you!',
-        body: 'Would love to catch up sometimes',
-        isRead: false,
-        sentAt: 1551133930594,
-        from: 'momo@momo.com',
-        to: 'user@appsus.com',
-        labels:['work','party']
-    },
-    {
         id: 'e102',
         subject: 'Hey!',
         body: 'When do we meet?',
@@ -33,35 +23,58 @@ const gMails = [
         sentAt: 155112390594,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
+        status: 'inbox',
+        labels:['romantic','work']
+    },
+    {
+        id: 'e101',
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false,
+        sentAt: 1551133930594,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        status: 'inbox',
+        labels:['work','party']
+    },
+    {
+        id: 'e103',
+        subject: 'Yo!',
+        body: 'When do we meet?',
+        isRead: true,
+        sentAt: 155112390594,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        status: 'trash',
+        labels:['romantic','work']
+    },
+    {
+        id: 'e104',
+        subject: 'Hey there! I need your help with something. Puki is waiting for you',
+        body: 'When do we meet?',
+        isRead: true,
+        sentAt: 155112390594,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        status: 'draft',
         labels:['romantic','work']
     },
 ]
-
-// const mail = {
-//     id: 'e101',
-//     subject: 'Miss you!',
-//     body: 'Would love to catch up sometimes',
-//     isRead: false,
-//     sentAt: 1551133930594,
-//     from: 'momo@momo.com',
-//     to: 'user@appsus.com'
-// }
 
 const loggedinUser = {
     mail: 'user@appsus.com',
     fullname: 'Mahatma Appsus'
 }
 
-
 // filterBy
-
 function getEmptyCriteria() {
     return {
         status: '',
         txt: '',
         isRead: false,
         isStared: false,
-        labels: []
+        labels: [],
+        currLabel: ''
     }
 }
 
@@ -106,7 +119,7 @@ function deleteMail(mailId) {
     return storageService.remove(MAILS_KEY, mailId)
 }
 
-function save(mail) {
+function save( mail) {
     if (mail.id) {
         return storageService.put(MAILS_KEY, mail)
     } else {

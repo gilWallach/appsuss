@@ -6,7 +6,8 @@ export default {
         <div class="left flex align-center">
             <i v-if="isApp"
                @click="toggleAside" 
-                class="fa fa-bars burger btn" aria-hidden="true"></i>
+                class="fa fa-bars burger btn" aria-hidden="true">
+            </i>
                 <img :src="setLogo" :class="setClass" alt="Gmail-Logo" />
                 <h2 :class="{apssus: !isApp}">{{setHeader}}</h2>
                 <!-- <router-link :to="setNavigation">{{setHeader}}</router-link> -->
@@ -52,22 +53,22 @@ export default {
         },
         setHeader() {
             if (this.pageName === 'keep') return 'Keep'
-            else if (this.pageName === 'mail') return 'Gmail'
+            else if (this.$route.fullPath.includes('mail')) return 'Gmail'
             else return 'Appsus'
         },
         setLogo() {
             if (this.pageName === 'keep') return 'assets/img/icons/keep.png'
-            else if (this.pageName === 'mail') return 'assets/img/icons/Gmail-Logo.png'
+            else if (this.$route.fullPath.includes('mail')) return 'assets/img/icons/Gmail-Logo.png'
             else return 'assets/img/icons/Appsus-logo.png'
         },
         setClass() {
-            if (this.pageName === 'mail') return 'mail-logo'
+            if (this.$route.fullPath.includes('mail')) return 'mail-logo'
         },
         setPlaceholder() {
             return (this.pageName === 'keep') ? 'Search note' : 'Search mail'
         },
         isApp() {
-            return this.pageName === 'keep' || this.pageName === 'mail'
+            return this.pageName === 'keep' || this.$route.fullPath.includes('mail')
         }
         // setNavigation() {
         //     if (this.pageName === 'keep') return '/mail'

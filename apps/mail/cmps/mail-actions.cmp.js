@@ -10,7 +10,6 @@ export default {
     </div>`,
     created(){
         this.mail.isRead = true
-        console.log('created', this.mail.isRead)
     },
     methods: {
         deleteMail() {

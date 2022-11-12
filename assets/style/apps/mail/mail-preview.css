@@ -1,16 +1,44 @@
-.checkbox, .starred{
+.preview-contaoner{
+    position: relative;
+}
+.preview-contaoner .checkbox, .starred{
     flex-basis: 42px;
 }
-.checkbox input{
+.preview-contaoner .checkbox input{
     cursor: pointer;
 }
 
-.subject, .from{
+.preview-contaoner .subject, .from{
     flex-basis: 0;
     flex-grow: 1;
     flex-shrink: 1;
 }
-.sent-at{
-    flex-grow: .5;
-    flex-shrink: .5;
+.preview-contaoner .time{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: opacity .3s;
+}
+
+.preview-contaoner .actions{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.preview-contaoner:hover .time{
+    background-color: aqua;
+    display: none;
+    opacity: 0;
+}
+
+.preview-contaoner:hover .actions{
+    display: inline;
+    opacity: 1;
 }

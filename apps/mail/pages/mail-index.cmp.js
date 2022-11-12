@@ -18,13 +18,13 @@ export default {
         @filter="filter"
         :criteria="criterias"
         :mails="mails"
+        :user="user"
         />
-
         <mail-list
         v-if="mails" 
         :mails="mailsToShow"
         :criteria="criterias"
-        @deleted="updatedMailList"
+        @update="updatedMailList"
         />
     </main>
     `,
@@ -32,7 +32,8 @@ export default {
         mailService.query()
             .then(mails => {
                 this.mails = mails
-                const dupLabels = mails.reduce((acc,mail)=>acc.concat(mail.labels),[])
+                //get Labels
+                const dupLabels = mails.reduce((acc, mail) => acc.concat(mail.labels), [])
                 const uniqueLabels = [...new Set([...dupLabels])]
                 this.criterias.labels = uniqueLabels
             })
@@ -41,24 +42,35 @@ export default {
         return {
             mails: null,
             user: mailService.getUser(),
-            criterias: {labels:[]},
+            criterias: { label: [] },
         }
     },
     methods: {
         filter(filterBy) {
             this.criterias = filterBy
         },
-        updatedMailList(){
+        updatedMailList() {
             mailService.query()
-            .then(mails => {
-                this.mails = mails
-            })
+                .then(mails => {
+                    this.mails = mails
+                })
         }
     },
     computed: {
         mailsToShow() {
+            const currLabel = this.criterias.currLabel
+            const isReadFilter = this.criterias.isRead
+            const currStatus = this.criterias.status || 'inbox'
             const regex = new RegExp(this.criterias.txt, 'i')
-            var mails = this.mails.filter(mail => regex.test(mail.subject))
+            var mails
+            if(currLabel) mails = this.mails.filter(mail => {
+                // Object.values(mail.labels).includes(currLabel)
+            })
+            else if(isReadFilter){
+                mails = this.mails.filter(mail => mail.isRead && mail.status === 'inbox')
+            }
+            else mails = this.mails.filter(mail => regex.test(mail.subject)
+                && mail.status === currStatus)
             return mails
         },
     },

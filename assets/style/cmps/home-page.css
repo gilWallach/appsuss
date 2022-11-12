@@ -1,0 +1,17 @@
+.home-page{
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px 10px;
+    background-color: var(--secondary-clr5);
+}
+.home-page h1{
+    font-size: 10rem;
+}
+.home-page h1 span{
+    color: var(--clr4);
+}
+
+.home-page h2{
+    color: var(--clr3);
+
+}

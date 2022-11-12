@@ -1,0 +1,15 @@
+.about-page{
+    padding: 20px;
+}
+
+.about-page h1{
+    text-align: center;
+    font-size: 2rem;
+}
+.about-page .content-container{
+    width: 600px;
+    margin: auto;
+}
+.about-page .content-container p {
+    font-size: 1.1rem;
+}

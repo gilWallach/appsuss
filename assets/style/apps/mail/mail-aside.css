@@ -31,6 +31,28 @@
 
 .mail-filter-container li{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+}
+.mail-filter-container li .aside-txt{
+    justify-content: space-between;
+    width: 100%;
+    padding-inline-start: 16px;
+}
+
+.mail-filter-container .aside .aside-txt{
+    opacity: 0;
+    display: none;
+}
+
+.open .main-app .aside .aside-txt{
+    opacity: 1;
+    display: block;
+}
+
+.open .main-app .aside a{
+    width: 100%;
+    border-radius: 0 2em 2em 0;
+    margin-left: 0;
+    padding-inline-start: 8px;
 }

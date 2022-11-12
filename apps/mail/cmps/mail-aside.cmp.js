@@ -4,7 +4,7 @@ export default {
     emits: ['filter', 'update'],
     props: ['criteria', 'mails', 'user'],
     template: `
-    <section class="aside-continer">
+    <section class="aside-continer" :class="{open:aside}">
         <div className="mail-add-container">
         <router-link 
         to="/mail/edit"
@@ -19,11 +19,41 @@ export default {
 
         <div className="mail-filter-container">
             <ul  v-if="mails">
-                <li @click="filterStatus('inbox')"><span>Inbox</span><span>{{ statusMailsCount('inbox') }}</span></li>
-                <li @click="filterIsRead"><span>Read</span><span>{{ readMailsCount }}</span></li>
-                <li @click="filterStatus('sent')"><span>Sent</span><span>{{ statusMailsCount('sent') }}</span></li>
-                <li @click="filterStatus('draft')"><span>Drafts</span><span>{{ statusMailsCount('draft') }}</span></li>
-                <li @click="filterStatus('trash')"><span>Trash</span><span>{{ statusMailsCount('trash') }}</span></li>
+                <li @click="filterStatus('inbox')" class="flex">
+                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                    <div class="aside-txt flex">
+                        <span>Inbox</span>
+                        <span>{{ statusMailsCount('inbox') }}</span>
+                    </div>
+                </li>
+                <li @click="filterIsRead"  class="flex">
+                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                    <div class="aside-txt flex">
+                        <span>Read</span>
+                        <span>{{ readMailsCount }}</span>
+                    </div>    
+                </li>
+                <li @click="filterStatus('sent')" class="flex">
+                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                    <div class="aside-txt flex">
+                        <span>Sent</span>
+                        <span>{{ statusMailsCount('sent') }}</span>
+                    </div>
+                </li>
+                <li @click="filterStatus('draft')" class="flex">
+                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                    <div class="aside-txt flex">
+                        <span>Drafts</span>
+                        <span>{{ statusMailsCount('draft') }}</span>
+                    </div>
+                </li>
+                <li @click="filterStatus('trash')" class="flex">
+                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                    <div class="aside-txt flex">
+                        <span>Trash</span>
+                        <span>{{ statusMailsCount('trash') }}</span>
+                    </div>
+                </li>
             </ul>
         <h4>Labels</h4>
     <ul v-if="criteria">

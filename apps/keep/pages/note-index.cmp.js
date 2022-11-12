@@ -12,14 +12,13 @@ import noteAside from "../cmps/note-aside.cmp.js"
 
 export default {
     name: 'note-index',
-    props:['aside'],
     template: `
 
     <note-filter
     @filter="setFilter"
     />
 
-    <main class="main-app" :class="{open:aside}">
+    <main class="main-app">
         <note-aside/>
         <div className="content-container">
             <note-edit

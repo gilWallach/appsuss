@@ -1,14 +1,14 @@
-.main-app .aside{
-    flex-basis: 25%;
+.main-app .aside {
+    flex-basis: 268px;
     font-family: nunito-bold;
 }
 
-.main-app .aside ul{
+.main-app .aside ul {
     display: flex;
     flex-direction: column;
 }
 
-.main-app .aside a{
+.main-app .aside a {
     display: flex;
     min-height: 48px;
     min-width: 48px;
@@ -21,37 +21,45 @@
     border-radius: 50%;
 }
 
-.main-app .aside a span{
+.main-app .aside a span {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 48px;
     width: 48px;
     font-size: 1.5rem;
-    /* padding-inline-end: 20px; */
 }
 
-.main-app .aside .aside-txt{
-    opacity: 0;
-    display: none;
+.main-app .aside .aside-txt {
+    /* opacity: 0; */
+    max-width: 0px;
+    overflow: hidden;
+    transition: opacity .6s, width .1s;
 }
 
-.open .main-app .aside .aside-txt{
+.open .main-app .aside .aside-txt {
     opacity: 1;
-    display: block;
+    min-width: 100%;
 }
 
-.open .main-app .aside a{
+.open .main-app .aside a {
     width: 100%;
     border-radius: 0 2em 2em 0;
+    padding-inline-start: 40px;
+    justify-content: space-evenly;
     margin-left: 0;
-    padding-inline-start: 8px;
+    transition: width .3s;
 }
 
-.main-app .aside li:not(.IS-ACTIVATED) a:hover{
+.open .main-app .aside a span {
+    padding-inline-end: 20px;
+
+}
+
+.main-app .aside li:not(.IS-ACTIVATED) a:hover {
     background-color: var(--secondary-clr2);
 }
 
-.main-app .aside li.IS-ACTIVATED a{
+.main-app .aside li.IS-ACTIVATED a {
     background-color: var(--secondary-clr5);
 }

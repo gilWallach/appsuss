@@ -17,11 +17,10 @@ const USER_KEY = 'userDB'
 const gMails = [
     {
         id: 'e102',
-        subject: 'Hey!',
-        body: 'When do we meet?',
-        isRead: true,
+        subject: 'Consider it done: Your order is ready for your review',
+        body: 'Hi gil_wallach, The Gig you ordered: \'I will record a professional north american female voice over\' from sleithm is ready for your review. To cross it off your to-do list, accept the delivery or request a revision if needed! Please note your order will be automatically marked as complete by Fiverr after 3 days, so make sure to review it. Thanks, The Fiverr Team',    isRead: true,
         sentAt: 155112390594,
-        from: 'momo@momo.com',
+        from: 'fiverr@e.fiverr.com',
         to: 'user@appsus.com',
         status: 'inbox',
         labels:['romantic','work']

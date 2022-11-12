@@ -21,17 +21,20 @@ export default {
         :user="user"
         />
         <mail-list
-        v-if="mails" 
+        v-if="mails && !$route.params.id"
         :mails="mailsToShow"
         :criteria="criterias"
         @update="updatedMailList"
         />
+        <router-view @update="updatedMailList"/>
     </main>
     `,
     created() {
         mailService.query()
             .then(mails => {
                 this.mails = mails
+                this.criterias.status = this.$route.query.status
+                this.criterias.isRead = this.$route.query.isRead
                 //get Labels
                 const dupLabels = mails.reduce((acc, mail) => acc.concat(mail.labels), [])
                 const uniqueLabels = [...new Set([...dupLabels])]
@@ -63,14 +66,23 @@ export default {
             const currStatus = this.criterias.status || 'inbox'
             const regex = new RegExp(this.criterias.txt, 'i')
             var mails
-            if(currLabel) mails = this.mails.filter(mail => {
+            mails = this.mails.filter(mail => regex.test(mail.subject) 
+                || regex.test(mail.body) 
+                || regex.test(mail.from)
+                || regex.test(mail.to))
+            if (currLabel) mails = mails.filter(mail => {
                 // Object.values(mail.labels).includes(currLabel)
             })
-            else if(isReadFilter){
-                mails = this.mails.filter(mail => mail.isRead && mail.status === 'inbox')
+            else if (isReadFilter) {
+                mails = mails.filter(mail => mail.isRead
+                    && mail.status === 'inbox')
             }
-            else mails = this.mails.filter(mail => regex.test(mail.subject)
-                && mail.status === currStatus)
+            else {
+                mails = mails.filter(mail => mail.status === currStatus)
+                console.log(mails)
+            }
+            // else mails = mails.filter(mail => regex.test(mail.subject)
+            //     && mail.status === currStatus)
             return mails
         },
     },

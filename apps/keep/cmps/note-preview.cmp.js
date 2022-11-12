@@ -17,14 +17,14 @@ export default {
         :info= note.info
         @toggle="saveNote">
     </component>
+    <button class="pin" @click.stop="togglePin()" :title="setTitle"><i :class="isPinned" class="btn" aria-hidden="true"></i></button>
     <div className="note-action-btns">
-        <button class="pin" @click.stop="togglePin()" :title="setTitle"><i :class="isPinned" aria-hidden="true"></i></button>
-        <button @click.stop="archive()" title="archive note"><i class="fa fa-archive" aria-hidden="true"></i></button>
-        <button @click.stop="remind()" title="remind note"><i class="fa fa-bell" aria-hidden="true"></i></button>
-        <label @click.stop="colorMenu=!colorMenu" class="btn" >🎨</label>
-        <button @click.stop="remove()" title="remove note"><i class="fa fa-trash-o" aria-hidden="true"></i></button>  
+        <button @click.stop="archive()" title="archive note"><i class="fa fa-archive btn" aria-hidden="true"></i></button>
+        <button @click.stop="remind()" title="remind note"><i class="fa fa-bell btn" aria-hidden="true"></i></button>
+        <label @click.stop="colorMenu=!colorMenu" class="btn"><img src="assets/img/icons/palette.png" alt="" /></label>
+        <button @click.stop="remove()" title="remove note"><i class="fa fa-trash-o btn" aria-hidden="true"></i></button>  
+        <color-picker :noteId="note.id" @color-changed="changeColor" :isOpen="colorMenu"/>
     </div>
-    <color-picker :noteId="note.id" @color-changed="changeColor" :isOpen="colorMenu"/>
     </div>
 
     `,

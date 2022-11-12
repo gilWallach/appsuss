@@ -2,13 +2,12 @@ main .content-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     gap: 40px;
     flex-grow: 1;
     flex-basis: 70%;
     overflow-y: scroll;
-    padding-top: 10vh;
     padding-bottom: 40px;
+    background-color: var(--clr1);
 }
 
 .main-app{

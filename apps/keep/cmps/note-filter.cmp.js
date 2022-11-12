@@ -2,6 +2,7 @@ export default {
     emits: ['filter'],
     name: 'notes-filter',
     template: `
+    <span></span>
     `,
     data() {
         return {

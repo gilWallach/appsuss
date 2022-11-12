@@ -3,6 +3,9 @@ import { mailService } from "../services/mail.service.js"
 
 export default {
     emits: ['filter'],
+    template: `
+    <span></span>
+    `,
     data() {
         return {
             filterBy: mailService.getEmptyCriteria()

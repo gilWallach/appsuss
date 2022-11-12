@@ -17,6 +17,7 @@
     column-gap: 5px;
 }
 
+
 @media (min-width:610px){
     .notes-list {
         column-count: 2;
@@ -29,7 +30,7 @@
 } */
 @media (min-width:1020px){
     .notes-list {
-        column-count: 3;
+        column-count: 10;
     }
 }
 
@@ -43,17 +44,34 @@
     position: relative;
 
 }
-
- .note-action-btns {
-    /* display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(22px, 1fr)); */
+button.pin{
     opacity: 0;
     transition: 0.8s;
-    align-items: center;
-    font-size: 1.2rem;
+    font-size: 24px;
 }
+ .note-action-btns {
+    position: relative;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     opacity: 0;
+     transition: 0.8s;
+     align-items: center;
+     font-size: 1.2rem;
+    }
+    .note-action-btns label{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 28px;
+    }
 
-.notes-list>li:hover .note-action-btns{
+    .note-action-btns .btn{
+        font-size: 24px;
+    }
+
+.notes-list>li:hover .note-action-btns,
+.notes-list>li:hover button.pin{
     opacity: 1;
 }
 
@@ -64,13 +82,14 @@
     position: absolute;
 }
 
- .note-action-btns button.pin{
+ button.pin{
     position: absolute;
     top: 0;
     right: 0;
 }
 
- .note-action-btns button{
+ .note-action-btns button, 
+ button.pin{
     background-color: transparent;
     border: 0;
 }

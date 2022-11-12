@@ -13,8 +13,8 @@ export default {
             <div class="flex align-center">
                 <button class="submit-btn" type="submit">Send</button>
                 <button class="delete-btn" @click.prevent="deleteMail"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-            </form>
             </div>
+        </form>
     </section>
     `,
 

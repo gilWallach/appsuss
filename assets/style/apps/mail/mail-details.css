@@ -1,5 +1,8 @@
 .details{
-    padding: 16px;
+    padding: 32px;
+    padding-top: 0;
+    width: calc(100% - 268px);
+    background-color: var(--clr1);
 }
 .details-info img{
     width: 40px;

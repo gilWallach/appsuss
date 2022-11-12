@@ -4,7 +4,7 @@ export default {
     emits: ['filter', 'update'],
     props: ['criteria', 'mails', 'user'],
     template: `
-    <section class="aside-continer" :class="{open:aside}">
+    <section class="aside-continer">
         <div className="mail-add-container">
         <router-link 
         to="/mail/edit"
@@ -19,50 +19,70 @@ export default {
 
         <div className="mail-filter-container">
             <ul  v-if="mails">
-                <li @click="filterStatus('inbox')" class="flex">
-                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                <li @click="filterStatus('inbox')" 
+                class="flex"
+                :class="{ 'IS-ACTIVATED': $route.query.status === 'inbox' 
+                || ($route.name === 'mail' && !$route.query.status && !$route.query.isRead )}">
+                    <span class="i-container flex">
+                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                    </span>
                     <div class="aside-txt flex">
                         <span>Inbox</span>
                         <span>{{ statusMailsCount('inbox') }}</span>
                     </div>
                 </li>
-                <li @click="filterIsRead"  class="flex">
-                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                <li @click="filterIsRead" 
+                class="flex"
+                :class="{ 'IS-ACTIVATED': $route.query.isRead}" >
+                    <span class="i-container flex">
+                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                    </span>
                     <div class="aside-txt flex">
                         <span>Read</span>
                         <span>{{ readMailsCount }}</span>
                     </div>    
                 </li>
-                <li @click="filterStatus('sent')" class="flex">
-                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                <li @click="filterStatus('sent')" 
+                class="flex"
+                :class="{ 'IS-ACTIVATED': $route.query.status === 'sent'}" >
+                    <span class="i-container flex">
+                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                    </span>
                     <div class="aside-txt flex">
                         <span>Sent</span>
                         <span>{{ statusMailsCount('sent') }}</span>
                     </div>
                 </li>
-                <li @click="filterStatus('draft')" class="flex">
-                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                <li @click="filterStatus('draft')"
+                 class="flex"
+                 :class="{ 'IS-ACTIVATED': $route.query.status === 'draft'}" >
+                    <span class="i-container flex">
+                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                    </span>
                     <div class="aside-txt flex">
                         <span>Drafts</span>
                         <span>{{ statusMailsCount('draft') }}</span>
                     </div>
                 </li>
-                <li @click="filterStatus('trash')" class="flex">
-                    <i class="fa fa-inbox" aria-hidden="true"></i>
+                <li @click="filterStatus('trash')" 
+                class="flex"
+                :class="{ 'IS-ACTIVATED': $route.query.status === 'trash'}" >
+                    <span class="i-container flex">
+                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                    </span>
                     <div class="aside-txt flex">
                         <span>Trash</span>
                         <span>{{ statusMailsCount('trash') }}</span>
                     </div>
                 </li>
             </ul>
-        <h4>Labels</h4>
+        <!-- <h4>Labels</h4>
     <ul v-if="criteria">
         <li v-for="label in criteria.labels"
-            @click="filterLabels(label)">{{label}}</li></a>
-    </ul>
+            @click="filterLabels(label)">{{label}}</li>
+    </ul> -->
         </div>
     </section>
-    <router-view/>
     `,
     methods: {
         statusMailsCount(category) {

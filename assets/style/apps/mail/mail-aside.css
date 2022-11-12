@@ -1,11 +1,17 @@
-.aside-continer{
-    width: 268px;
-    height: calc(100vh - 100px);}
+.aside-continer {
+    width: 100px;
+    height: calc(100vh - 100px);
+}
 
-.mail-add-container{
+.open .aside-continer {
+    width: 268px;
+}
+
+.mail-add-container {
     position: relative;
 }
-.aside-continer button{
+
+.aside-continer button {
     background-color: var(--secondary-clr3);
     border: none;
     border-radius: 10px;
@@ -16,43 +22,69 @@
     justify-content: space-around;
 }
 
-.mail-filter-container ul{
-    margin-inline: 26px 12px;
+/* .open .aside-continer button{
+    width: 48px;
+} */
+.mail-filter-container ul {
+    padding-inline: 26px 12px;
     padding: 0;
 }
-.mail-filter-container ul li{
+
+.mail-filter-container ul li {
     padding: 6px 0;
     cursor: pointer;
 }
-.mail-filter-container h4{
+.mail-filter-container ul li span {
+    padding-inline-end: 12px;
+}
+
+.mail-filter-container h4 {
     margin-inline: 26px 12px;
 
 }
 
-.mail-filter-container li{
+.mail-filter-container li {
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-.mail-filter-container li .aside-txt{
+
+.mail-filter-container li .aside-txt {
     justify-content: space-between;
-    width: 100%;
+    flex-basis: 80%;
     padding-inline-start: 16px;
 }
 
-.mail-filter-container .aside .aside-txt{
+.open .mail-filter-container .aside-txt {
+    opacity: 1;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline-start: 16px
+}
+
+.mail-filter-container .aside-txt {
     opacity: 0;
     display: none;
 }
 
-.open .main-app .aside .aside-txt{
-    opacity: 1;
-    display: block;
+.mail-filter-container li .i-container {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
 }
 
-.open .main-app .aside a{
+.mail-filter-container .IS-ACTIVATED{
+    font-family: nunito-bold;
+    background-color: var(--secondary-clr4);
+    border-radius: 20px;
+}
+
+/* .open .main-app .aside a{
     width: 100%;
     border-radius: 0 2em 2em 0;
     margin-left: 0;
     padding-inline-start: 8px;
-}
+} */

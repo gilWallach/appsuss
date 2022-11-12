@@ -36,12 +36,13 @@ const routerOptions = {
 					path: 'edit:id?',
 					component: mailEdit
 				},
+				{
+					path: '/mail/:id',
+					component: mailDetails,
+				},
 			]
 		},
-		{
-			path: '/mail/:id',
-			component: mailDetails,
-		},
+	
 
 		// keep routes
 		{

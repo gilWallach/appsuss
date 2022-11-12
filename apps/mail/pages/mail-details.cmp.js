@@ -1,10 +1,6 @@
-// make actions a seperate cmp
 // add labels
-// add
 
 import { mailService } from '../services/mail.service.js'
-
-// import mailActions from '../cmps/mail-actions.cmp.js'
 
 export default {
     template: `

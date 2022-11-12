@@ -41,7 +41,9 @@ export default {
     },
     methods: {
         searchByTxt() {
-            this.$router.push({ query: { txt: this.input, status:this.$route.query.status} })
+            this.$router.push({ query: { txt: this.input, 
+                status:this.$route.query.status, 
+                isRead: this.$route.query.isRead} })
         },
         toggleAside() {
             this.$emit('aside-toggle')

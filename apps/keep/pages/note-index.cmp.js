@@ -52,6 +52,8 @@ export default {
         }
     },
     created() {
+        this.filterBy.txt = this.$route.query.txt
+        this.filterBy.status = this.$route.query.status
         this.loadNotes()
     },
     methods: {
@@ -75,6 +77,7 @@ export default {
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
+            console.log(this.filterBy);
         },
         updateNote(updatedNote){
            const idx = this.notes.findIndex(note=>note.id===updatedNote.id)
@@ -85,7 +88,10 @@ export default {
         notesToShow() {
             const regex = new RegExp(this.filterBy.txt, 'i')
             var notes = this.notes.filter(note => regex.test(note.info.txt))
-            // notes = notes.filter(note => note.maxSpeed > this.filterBy.minSpeed)
+            if(this.filterBy.status === 'reminders') notes = notes.filter(note => note.isReminded && !note.deletedAt && !note.isArchived)
+            else if(this.filterBy.status === 'archive') notes = notes.filter(note => note.isArchived && !note.deletedAt && !note.isReminded)
+            else if(this.filterBy.status === 'trash') notes = notes.filter(note => note.deletedAt)
+            else notes = notes.filter(note => !note.deletedAt && !note.isArchived && !note.isReminded)
             return notes
         },
         pinnedNotesToShow() {

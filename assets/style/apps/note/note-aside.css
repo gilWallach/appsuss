@@ -48,10 +48,10 @@
     padding-inline-start: 8px;
 }
 
-.main-app .aside a:not(.router-link-exact-active):hover{
+.main-app .aside li:not(.IS-ACTIVATED) a:hover{
     background-color: var(--secondary-clr2);
 }
 
-.main-app .aside .router-link-exact-active{
+.main-app .aside li.IS-ACTIVATED a{
     background-color: var(--secondary-clr5);
 }

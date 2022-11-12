@@ -6,7 +6,8 @@ export default {
     data() {
         return {
             filterBy: {
-                txt: ''
+                txt: '',
+                status:'notes'
             }
         }
     },
@@ -18,13 +19,14 @@ export default {
     },
     computed:{
         urlChange(){
-            return this.$route.query.txt
+            return this.$route.query
         }
     },
     watch:{
         urlChange(){
             console.log('filter changed');
             this.filterBy.txt = this.$route.query.txt
+            this.filterBy.status = this.$route.query.status
             this.filter()
         }
     }

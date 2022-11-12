@@ -81,8 +81,6 @@ export default {
                 mails = mails.filter(mail => mail.status === currStatus)
                 console.log(mails)
             }
-            // else mails = mails.filter(mail => regex.test(mail.subject)
-            //     && mail.status === currStatus)
             return mails
         },
     },

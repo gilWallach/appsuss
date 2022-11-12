@@ -35,7 +35,7 @@ export default {
                 class="flex"
                 :class="{ 'IS-ACTIVATED': $route.query.isRead}" >
                     <span class="i-container flex">
-                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                        <i class="fa fa-envelope-open-o" aria-hidden="true"></i>
                     </span>
                     <div class="aside-txt flex">
                         <span>Read</span>
@@ -46,7 +46,7 @@ export default {
                 class="flex"
                 :class="{ 'IS-ACTIVATED': $route.query.status === 'sent'}" >
                     <span class="i-container flex">
-                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                     </span>
                     <div class="aside-txt flex">
                         <span>Sent</span>
@@ -57,7 +57,7 @@ export default {
                  class="flex"
                  :class="{ 'IS-ACTIVATED': $route.query.status === 'draft'}" >
                     <span class="i-container flex">
-                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                        <i class="fa fa-file-o" aria-hidden="true"></i>
                     </span>
                     <div class="aside-txt flex">
                         <span>Drafts</span>
@@ -68,7 +68,7 @@ export default {
                 class="flex"
                 :class="{ 'IS-ACTIVATED': $route.query.status === 'trash'}" >
                     <span class="i-container flex">
-                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </span>
                     <div class="aside-txt flex">
                         <span>Trash</span>

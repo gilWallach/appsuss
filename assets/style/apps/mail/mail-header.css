@@ -43,7 +43,7 @@
     justify-content: flex-start;
 }
 .header-sec .middle input{
-    font-weight: nunito-light;
+    font-weight: nunito-regular;
     font-size: 16px;
     max-width: 722px;
     min-width: 324px;

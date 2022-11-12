@@ -1,5 +1,5 @@
 .aside-continer {
-    width: 100px;
+    width: 48px;
     height: calc(100vh - 100px);
 }
 
@@ -33,9 +33,6 @@
 .mail-filter-container ul li {
     padding: 6px 0;
     cursor: pointer;
-}
-.mail-filter-container ul li span {
-    padding-inline-end: 12px;
 }
 
 .mail-filter-container h4 {

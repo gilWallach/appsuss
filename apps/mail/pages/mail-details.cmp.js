@@ -23,7 +23,7 @@ export default {
             <p className="details-time"> {{ sentAtFormat }} </p>
         </div>
     </div>
-    <div className="details-content"> {{ mail.body }} </div>
+    <pre className="details-content"> {{ mail.body }} </pre>
     </section>
     `,
     created() {

@@ -64,15 +64,15 @@ const gMails = [
     },
     {
         id: 'e104',
-        subject: `Hey there! 
+        subject: `Muki misses you`,
+        body: `Hey there! 
             I need your help with something.
-            Puki is having a hard time in school, I want to cheer him up. 
+            Muki is having a hard time in school, I want to cheer him up. 
             He misses you a lot and was hoping you could come visit.
 
             Let me know if you can come by next week, we will make cookies for you.
             
             Hope to see you soon`,
-        body: 'When do we meet?',
         isRead: true,
         sentAt: 155112380594,
         from: 'momo@momo.com',
@@ -446,7 +446,7 @@ const gMails = [
     },
     {
         id: 'e120',
-        subject: `Brief for next project`,
+        subject: `Confirm meeting tomorrow`,
         body: `
             Hey there!
 

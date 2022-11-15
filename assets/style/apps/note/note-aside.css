@@ -1,6 +1,10 @@
 .main-app .aside {
-    flex-basis: 268px;
+    flex-basis: 50px;
     font-family: nunito-bold;
+}
+
+.open .main-app .aside {
+    flex-basis: 268px;
 }
 
 .main-app .aside ul {

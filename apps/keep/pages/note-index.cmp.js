@@ -11,6 +11,7 @@ import noteAside from "../cmps/note-aside.cmp.js"
 
 
 export default {
+    emits:['close-menu'],
     name: 'note-index',
     template: `
 
@@ -19,7 +20,7 @@ export default {
     />
 
     <main class="main-app">
-        <note-aside/>
+        <note-aside @close-menu="$emit('close-menu')"/>
         <div className="content-container">
             <note-edit
             @note-saved="saveNote"/>

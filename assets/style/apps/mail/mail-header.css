@@ -1,10 +1,21 @@
+
 .header-sec{
-    padding: 8px;
     width: 100%;
     justify-content: space-between;
     background-color: var(--secondary-clr1);
     height: 10vh;
 }
+
+@media (min-width:650px){
+    .header-sec{
+        padding: 8px;
+    }
+    .header-sec .left{
+        width: 238px;
+        padding-inline-end: 40px;
+    }
+}
+
 .header-sec .burger{
     font-size: 24px;
     padding: 12px;
@@ -12,10 +23,7 @@
     font-weight: nunito-regular;
 }
 
-.header-sec .left{
-    width: 238px;
-    padding-inline-end: 40px;
-}
+
 
 .header-sec .left .mail-logo{
     width: 30px;
@@ -32,6 +40,12 @@
 .header-sec .left h2{
     margin-bottom: 0;
 }
+
+@media (max-width:380px){
+    .header-sec .left h2{
+        display: none;
+    }
+}
 .header-sec .left h2.apssus{
     align-self: flex-end;
 }
@@ -44,14 +58,21 @@
 }
 .header-sec .middle input{
     font-weight: nunito-regular;
-    font-size: 16px;
-    max-width: 722px;
-    min-width: 324px;
     border-radius: 10px;
+    width: 82px;
     border:none;
     background-color: var(--secondary-clr2);
     outline: none;
 }
+
+@media (min-width:650px){
+    .header-sec .middle input{
+        font-size: 1rem;
+        max-width: 722px;
+        min-width: 324px;
+    }
+}
+
 .header-sec .right img{
     width: 32px;
     height: 32px;

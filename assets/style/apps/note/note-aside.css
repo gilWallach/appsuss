@@ -1,15 +1,45 @@
 .main-app .aside {
-    flex-basis: 50px;
+    flex-basis: 68px;
     font-family: nunito-bold;
+    z-index: 10;
+    position: absolute;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s;
 }
 
 .open .main-app .aside {
-    flex-basis: 268px;
+    max-height: 100%;
+    overflow: auto;
+}
+
+@media (min-width:650px){
+     .main-app .aside {
+        flex-basis: 68px;
+        z-index: auto;
+        position: static;
+        max-height: 100%;
+        overflow: auto;
+    }
+
+    .open .main-app .aside{
+        flex-basis: 268px;;
+    }
 }
 
 .main-app .aside ul {
     display: flex;
     flex-direction: column;
+    width: 100vw;
+    background-color: var(--clr2);
+}
+
+@media (min-width:650px){
+    .main-app .aside ul {
+        width: auto;
+        background-color: transparent;
+    }
+    
 }
 
 .main-app .aside a {
@@ -20,10 +50,15 @@
     align-items: center;
     width: 25%;
     overflow: hidden;
-    width: 10px;
-    margin-left: 10px;
     border-radius: 50%;
 }
+
+@media (min-width:650px){
+    .main-app .aside a{
+        margin-left: 10px;
+    }
+}
+
 
 .main-app .aside a span {
     display: flex;
@@ -49,10 +84,16 @@
 .open .main-app .aside a {
     width: 100%;
     border-radius: 0 2em 2em 0;
-    padding-inline-start: 40px;
+    padding-inline-start: 35px;
     justify-content: space-evenly;
     margin-left: 0;
     transition: width .3s;
+}
+
+@media (min-width:650px){
+    .open .main-app .aside a {
+        padding-inline-start: 43px;
+    }
 }
 
 .open .main-app .aside a span {

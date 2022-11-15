@@ -11,7 +11,7 @@ const options = {
         <section class="main-container">
             <mail-header @aside-toggle="toggleAside"/>
             <section className="apps" :class="{open:isMenuOpen}">
-                <router-view />
+                <router-view @close-menu="isMenuOpen=false" />
             </section>
             <app-footer />
             <user-msg />
